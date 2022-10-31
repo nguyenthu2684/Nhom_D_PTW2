@@ -20,7 +20,7 @@ let initWebRoutes = (app) => {
     
     //Viet API 
     router.post('/api/login',userController.handleLogin);
-    // router.post('/api/logout', userController.handleLogout);
+    router.get('/api/get-all-user', userController.handleGetAllUser);
 
 
 
