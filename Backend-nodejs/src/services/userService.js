@@ -111,9 +111,5 @@ let getAllUsers =(userId)=> {
 
 module.exports = {
     handleUserLogin:handleUserLogin,
-    // handleLogout: handleLogout
     getAllUsers:getAllUsers
-    
-
-
 }
