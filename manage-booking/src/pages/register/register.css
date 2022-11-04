@@ -1,0 +1,7 @@
+.submit {
+    margin: auto;
+    display: block;
+    background-color: orangered;
+    padding: 5px 30px;
+    color: white;
+}
