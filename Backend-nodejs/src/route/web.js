@@ -38,11 +38,6 @@ let initWebRoutes = (app) => {
 
     
 
-    // Retun ra view 
-    router.get('/quangkhoa', (req, res) => {
-        return res.send("Hello World with QK")
-    });
-
     return app.use("/", router);
 }
 
