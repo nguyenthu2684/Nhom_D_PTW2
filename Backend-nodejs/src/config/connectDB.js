@@ -11,10 +11,9 @@ const sequelize = new Sequelize('bookingdoctor', 'root', null, {
 let connectDB = async () => {
     try {
         await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
+        console.log('Kết nối đã được thiết lập thành công.');
       } catch (error) {
-        console.error('Unable to connect to the database:', error);
+        console.error('Kết nối thiết lập thất bại:', error);
       }
 }
-
 module.exports = connectDB;

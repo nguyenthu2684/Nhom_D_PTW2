@@ -31,7 +31,7 @@
     },
     "menu": {
         "system": {
-            "header": "Hệ thống",
+            "header": "Doctor",
             "system-administrator": {
                 "header": "Quản trị hệ thống",
                 "user-manage": "Quản lý người sử dụng",

@@ -22,9 +22,7 @@ let createNewUser = async (data) => {
         }catch(e){
             reject(e);
         }
-    })
-    
-  
+    })  
 }
 
 let hashUserPassword = (password)=> {
@@ -80,7 +78,7 @@ let updateUserDate = (data)=> {
         let user = await db.User.findOne({
             where: {id: data.id}
         })
-        if(user){
+        if(user){   
             user.firstName= data.firstName;
             user.lastName= data.lastName;
             user.address= data.address;

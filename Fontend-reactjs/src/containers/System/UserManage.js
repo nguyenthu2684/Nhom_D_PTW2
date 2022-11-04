@@ -4,17 +4,25 @@ import { connect } from 'react-redux';
 class UserManage extends Component {
 
     state = {
+       
 
     }
 
     componentDidMount() {
 
     }
+   
 
 
     render() {
         return (
-            <div className="text-center">Manage users quang khoasda</div>
+            <div className='manager-doctor'>
+                    <ul className='list-doctor'>List Doctor
+                        <li className='item-doctor'>Ngo Quang Khoa1</li>
+                    </ul>
+
+
+            </div>
         );
     }
 

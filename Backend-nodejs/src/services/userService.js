@@ -109,6 +109,17 @@ let getAllUsers =(userId)=> {
     })
 }
 
+let handleDoctor= (userId)=> {
+    return new Promise(async(resolve,reject)=>{
+        try {
+
+        }catch(e) {
+            reject(e)
+
+        }
+    });
+}
+
 module.exports = {
     handleUserLogin:handleUserLogin,
     getAllUsers:getAllUsers

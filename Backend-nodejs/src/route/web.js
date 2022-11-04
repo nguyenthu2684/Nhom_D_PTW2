@@ -7,20 +7,28 @@ let router = express.Router();
 let initWebRoutes = (app) => {
     // Router from getHomePage at views
     router.get('/', homeController.getHomePage);
-    router.get('/about', homeController.getAbout);
     router.get('/crud', homeController.getCRUD);
 
+    //API Add Users
     router.post('/post-crud', homeController.postCRUD);
     router.get('/get-crud', homeController.displayGetCRUD);
+    //API sửa user
     router.get('/edit-crud', homeController.geteEditCRUD);
 
     
     router.post('/put-crud', homeController.putCRUD);
+    //API xóa user
     router.get('/delete-crud', homeController.deleteCRUD);
     
-    //Viet API 
+    //Viet API
+    //API Login 
     router.post('/api/login',userController.handleLogin);
+    //API Get All Users
     router.get('/api/get-all-user', userController.handleGetAllUser);
+    //API 
+    // router.post('/api/doctor', userController.handleDoctor);
+    
+
 
 
 
