@@ -34,6 +34,18 @@ module.exports = {
             res.send(user);
         }, data)
     },
+
+    addUserByAdmin: (req, res) => {
+        data = req.body;
+        console.log(JSON.stringify(data));
+        User.addUserByAdmin(function(err, user) {
+            if (err) {
+                res.send(err);
+            }
+            console.log('Res: ', user);
+            res.send(user);
+        }, data)
+    },
     updateUser: (req, res) => {
         data = req.body;
         const userId = req.params.id;

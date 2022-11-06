@@ -8,16 +8,24 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
+
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
 
-app.get('/', (req, res) => {
-  res.send("Hello!");
-})
+// app.get('/', (req, res) => {
+//   res.send("Hello!");
+// })
 
+
+//Users
 const userRoutes =require('./routes/user.route');
-
 app.use('/api/user', userRoutes);
+
+
+//Doctor
+const doctorRoutes =require('./routes/doctor.route');
+app.use('/api/doctor', doctorRoutes);
+
 
 app.listen(port, function() {
   console.log('Server listening on port ', port);
