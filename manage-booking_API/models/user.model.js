@@ -38,8 +38,14 @@ User.getUserById = function(result, userId) {
         }
     });   
 }
-User.addUser = function(result, data) {        
-    dbConnection.query('insert into `users`(`email`, `password`, `createdAt`) value("'+ data.email +'","'+ data.password +'","'+ data.createdAt + '")', function(err, res) {
+User.addUser = function(result, data) {  
+    const d = new Date(Date.now()); 
+    const year = d.getFullYear();
+    const month = d.getMonth() + 1;
+    const day = d.getDay();
+    const ymd = year+"/"+month+"/"+day;
+
+    dbConnection.query('insert into `users`(`email`, `password`, `firstName`, `lastName`, `address`, `gender`, `roleId`, `phonenumber`, `positionId`, `image`, `createdAt`) value("'+ data.email +'","'+ data.password + '","'+ data.firstName +'","'+ data.lastName +'","'+ data.address +'","'+ data.gender +'","'+ data.roleId +'","'+ data.phonenumber +'","'+ data.positionId +'","'+ data.image +'","'+ ymd + '")', function(err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
@@ -49,13 +55,20 @@ User.addUser = function(result, data) {
         }
     });
 }
-User.updateUser = function(result, data) {        
-    dbConnection.query('insert into `users`(`email`, `password`, `createdAt`) value("'+ data.email +'","'+ data.password +'","'+ data.createdAt + '")', function(err, res) {
+
+User.updateUser = function(result, data, userId) {  
+    const d = new Date(Date.now()); 
+    const year = d.getFullYear();
+    const month = d.getMonth() + 1;
+    const day = d.getDay();
+    const ymd = year+"/"+month+"/"+day;
+
+    dbConnection.query('update `users` set `email`= "'+ data.email +'",`password`= "'+ data.password +'",`firstName`= "'+ data.firstName +'",`lastName`= "'+ data.lastName +'",`address`= "'+ data.address +'",`gender`= "'+ data.gender +'",`roleId`= "'+ data.roleId +'",`phonenumber`= "'+ data.phonenumber +'",`positionId`= "'+ data.positionId +'",`image`= "'+ data.image +'",`updatedAt`= "'+ ymd +'" WHERE `id`= "'+ userId +'"', function(err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
         } else {
-            console.log("User: ", res);
+            console.log("User: ", res,ymd);
             result(null, res);
         }
     });

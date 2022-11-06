@@ -34,5 +34,17 @@ module.exports = {
             res.send(user);
         }, data)
     },
+    updateUser: (req, res) => {
+        data = req.body;
+        const userId = req.params.id;
+        console.log(JSON.stringify(data));
+        User.updateUser(function(err, user) {
+            if (err) {
+                res.send(err);
+            }
+            console.log('Res: ', user);
+            res.send(user);
+        }, data,userId)
+    },
     
 }
