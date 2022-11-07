@@ -11,12 +11,8 @@ import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authenticati
 import { path } from '../utils'
 
 import Home from '../routes/Home';
-// import Login from '../routes/Login';
 import Login from './Auth/Login';
-
-import Header from './Header/Header';
 import System from '../routes/System';
-
 import { CustomToastCloseButton } from '../components/CustomToast';
 import Homepage from './Homepage/HomePage.js';
 
@@ -48,7 +44,7 @@ class App extends Component {
             <Fragment>
                 <Router history={history}>
                     <div className="main-container">
-                        {this.props.isLoggedIn && <Header />}
+                       
 
                         <div className="coCustomScrollbarsntent-container">
                             <CustomScrollbars style={{width:'100%', height:'100vh'}}>

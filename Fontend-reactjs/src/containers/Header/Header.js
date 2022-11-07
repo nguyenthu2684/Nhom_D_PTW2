@@ -5,11 +5,15 @@ import * as actions from "../../store/actions";
 import Navigator from '../../components/Navigator';
 import { adminMenu } from './menuApp';
 import './Header.scss';
-
+import {LANGUAGE} from '../../utils';
 class Header extends Component {
+    handleChangeLanguage= (language)=> {
+        this.props.changeLanguageAppRedux(language);
+
+    }
 
     render() {
-        const { processLogout } = this.props;
+        const { processLogout, language } = this.props;
 
         return (
             <div className="header-container">
@@ -18,10 +22,16 @@ class Header extends Component {
                     <Navigator menus={adminMenu} />
                 </div>
 
+                <div className='languages'>
+                    <span className={language === LANGUAGE.VI ? 'language-vi active' :'language-vi'} onClick={()=> this.handleChangeLanguage(LANGUAGE.VI)}>VN</span>
+                    <span className={language === LANGUAGE.EN ? 'language-en active' :'language-en'} onClick={()=> this.handleChangeLanguage(LANGUAGE.EN)}>EN</span>
+
                 {/* nút logout */}
-                <div className="btn btn-logout" onClick={processLogout}>
+                <div className="btn btn-logout" onClick={processLogout} title='Log out'>
                     <i className="fas fa-sign-out-alt"></i>
                 </div>
+                </div>
+
             </div>
         );
     }
@@ -30,13 +40,17 @@ class Header extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn,
+        language: state.app.language,
+
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         processLogout: () => dispatch(actions.processLogout()),
+        changeLanguageAppRedux: (language)=>dispatch(actions.changeLanguageApp(language))
+
     };
 };
 
