@@ -58,5 +58,16 @@ module.exports = {
             res.send(user);
         }, data,userId)
     },
+    deleteUserByID: (req, res) => {
+        const userId = req.params.id;
+        User.deleteUserByID(function(err, user) {
+            if (err) {
+                console.log('Controller - Delete user by id: ', err);
+                res.send(err);
+            }
+            console.log('Res: ', user);
+            res.send(user);
+        }, userId)
+    },
     
 }

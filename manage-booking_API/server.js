@@ -26,6 +26,9 @@ app.use('/api/user', userRoutes);
 const doctorRoutes =require('./routes/doctor.route');
 app.use('/api/doctor', doctorRoutes);
 
+//Prescription
+const prescriptionRoutes =require('./routes/prescription.route');
+app.use('/api/prescription', prescriptionRoutes);
 
 app.listen(port, function() {
   console.log('Server listening on port ', port);

@@ -97,4 +97,19 @@ User.updateUser = function(result, data, userId) {
         }
     });
 }
+
+User.deleteUserByID = function (result, userId) {
+    dbConnection.query(
+      "delete from users where id=" + userId,
+      function (err, res) {
+        if (err) {
+          console.log("Error: ", err);
+          result(null, err);
+        } else {
+          console.log("Doctor: ", res);
+          result(null, res);
+        }
+      }
+    );
+  }
 module.exports = User;
