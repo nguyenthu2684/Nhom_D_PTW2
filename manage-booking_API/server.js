@@ -22,14 +22,27 @@ const userRoutes =require('./routes/user.route');
 app.use('/api/user', userRoutes);
 
 
-//Doctor
-const doctorRoutes =require('./routes/doctor.route');
-app.use('/api/doctor', doctorRoutes);
+//SpecialistDoctor
+const specialistDoctorRoutes =require('./routes/specialist_doctor.route');
+app.use('/api/specialistDoctor', specialistDoctorRoutes);
+
+//ExaminationCard
+const examinationCardRoutes =require('./routes/examinationCard.route');
+app.use('/api/examinationCard', examinationCardRoutes);
+
+//updateInformationDoctorController
+const upInforDoctorRoute=require('./routes/update_information_doctor.route');
+app.use('/api/upInforDoctor', upInforDoctorRoute);
 
 //Prescription
 const prescriptionRoutes =require('./routes/prescription.route');
 app.use('/api/prescription', prescriptionRoutes);
 
+//Prescription
+const logRoutes =require('./routes/login.route');
+app.use('/api/log', logRoutes);
+
+//bottom
 app.listen(port, function() {
   console.log('Server listening on port ', port);
 });

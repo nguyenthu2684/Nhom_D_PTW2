@@ -7,8 +7,9 @@ const prescriptionController = require('../controllers/prescription.controller')
 
 //prescription
 router.route('/getAll').get(prescriptionController.getAll);
+router.route('/:id').get(prescriptionController.getById);
 router.route('/addPrescription').post(prescriptionController.addPrescription);
-// router.route('/update/:id').put(userController.updateUser);
+router.route('/delete/:id').delete(prescriptionController.deletePrescription);
 
 
 

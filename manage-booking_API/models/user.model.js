@@ -1,18 +1,15 @@
 const dbConnection = require('../configs/db.config');
 
 const User = function(user) {
+    this.userName = user.userName;
+    this.fullName = user.fullName;
     this.email = user.email;
-    this.password = user.password;
-    this.firstName = user.firstName;
-    this.lastName = user.lastName;
-    this.address = user.address;
+    this.phone = user.phone;
+    this.birthday = new Date();
     this.gender = user.gender;
-    this.roleId = user.roleId;
-    this.phonenumber = user.phonenumber;
-    this.positionId = user.positionId;
+    this.address = user.address;
     this.image = user.image;
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
+    this.role = user.role;
 }
 
 User.getAll = function(result) {
@@ -28,7 +25,7 @@ User.getAll = function(result) {
 }
 
 User.getUserById = function(result, userId) {
-    dbConnection.query("select * from users where id=" + userId, function(err, res) {
+    dbConnection.query("select * from users where idUser=" + userId, function(err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
@@ -38,35 +35,9 @@ User.getUserById = function(result, userId) {
         }
     });   
 }
+
 User.addUser = function(result, data) {  
-    const d = new Date(Date.now()); 
-    const year = d.getFullYear();
-    const month = d.getMonth() + 1;
-    const day = d.getDay();
-    const ymd = year+"/"+month+"/"+day;
-
-    dbConnection.query('insert into `users`(`email`, `password`, `firstName`, `lastName`, `address`, `gender`, `roleId`, `phonenumber`, `positionId`, `image`, `createdAt`) value("'+ data.email +'","'+ data.password + '","'+ data.firstName +'","'+ data.lastName +'","'+ data.address +'","'+ data.gender +'","3","'+ data.phonenumber +'","'+ data.positionId +'","'+ data.image +'","'+ ymd + '")', function(err, res) {
-        if (err) {
-            console.log("Error: ", err);
-            result(null, err);
-        } else {
-            console.log("User: ", res);
-            result(null, res);
-        }
-    });
-}
-
-User.addUserByAdmin = function(result, data) {  
-    const d = new Date(Date.now());
-  const year = d.getFullYear();
-  const month = d.getMonth() + 1;
-  const day = d.getDay();
-  const hour = d.getHours();
-  const minute = d.getMinutes();
-  const second = d.getSeconds();
-  const ymd = year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second;
-
-    dbConnection.query('insert into `users`(`email`, `password`, `firstName`, `lastName`, `address`, `gender`, `roleId`, `phonenumber`, `positionId`, `image`, `createdAt`) value("'+ data.email +'","'+ data.password + '","'+ data.firstName +'","'+ data.lastName +'","'+ data.address +'","'+ data.gender +'","2","'+ data.phonenumber +'","'+ data.positionId +'","'+ data.image +'","'+ ymd + '")', function(err, res) {
+    dbConnection.query('insert into `users`(`userName`, `fullName`, `email`, `phone`, `birthday`, `gender`, `address`, `image`, `role`) value("'+ data.userName +'","'+ data.fullName + '","'+ data.email +'","'+ data.phone +'","'+ data.birthday +'","'+ data.gender +'","' + data.address +'","'+ data.image +'","3")', function(err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
@@ -78,21 +49,21 @@ User.addUserByAdmin = function(result, data) {
 }
 
 User.updateUser = function(result, data, userId) {  
-    const d = new Date(Date.now());
-  const year = d.getFullYear();
-  const month = d.getMonth() + 1;
-  const day = d.getDay();
-  const hour = d.getHours();
-  const minute = d.getMinutes();
-  const second = d.getSeconds();
-  const ymd = year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second;
+//     const d = new Date(Date.now());
+//   const year = d.getFullYear();
+//   const month = d.getMonth() + 1;
+//   const day = d.getDay();
+//   const hour = d.getHours();
+//   const minute = d.getMinutes();
+//   const second = d.getSeconds();
+//   const ymd = year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second;
 
-    dbConnection.query('update `users` set `email`= "'+ data.email +'",`password`= "'+ data.password +'",`firstName`= "'+ data.firstName +'",`lastName`= "'+ data.lastName +'",`address`= "'+ data.address +'",`gender`= "'+ data.gender +'",`roleId`= "'+ data.roleId +'",`phonenumber`= "'+ data.phonenumber +'",`positionId`= "'+ data.positionId +'",`image`= "'+ data.image +'",`updatedAt`= "'+ ymd +'" WHERE `id`= "'+ userId +'"', function(err, res) {
+    dbConnection.query('update `users` set `userName`= "'+ data.userName +'",`email`= "'+ data.email +'",`phone`= "'+ data.phone +'",`gender`= "'+ data.gender +'",`address`= "'+ data.address +'",`image`= "'+ data.image +'",`role`= "'+ data.role +'" WHERE `idUser`= "'+ userId +'"', function(err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
         } else {
-            console.log("User: ", res,ymd);
+            console.log("User: ", res);
             result(null, res);
         }
     });
@@ -100,7 +71,7 @@ User.updateUser = function(result, data, userId) {
 
 User.deleteUserByID = function (result, userId) {
     dbConnection.query(
-      "delete from users where id=" + userId,
+      "delete from users where idUser=" + userId,
       function (err, res) {
         if (err) {
           console.log("Error: ", err);
