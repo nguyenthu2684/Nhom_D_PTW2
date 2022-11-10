@@ -3,7 +3,7 @@ const User = require('../models/user.model');
 module.exports = {
     getAll: (req, res) => {
         User.getAll(function(err, user) {
-            console.log('controller');
+            console.log('controller - Get all user');
             if (err) {
                 res.send(err);
             }
@@ -23,6 +23,7 @@ module.exports = {
             res.send(user);
         }, userId)
     },
+
     addUser: (req, res) => {
         data = req.body;
         console.log(JSON.stringify(data));
@@ -34,18 +35,7 @@ module.exports = {
             res.send(user);
         }, data)
     },
-
-    addUserByAdmin: (req, res) => {
-        data = req.body;
-        console.log(JSON.stringify(data));
-        User.addUserByAdmin(function(err, user) {
-            if (err) {
-                res.send(err);
-            }
-            console.log('Res: ', user);
-            res.send(user);
-        }, data)
-    },
+   
     updateUser: (req, res) => {
         data = req.body;
         const userId = req.params.id;
@@ -58,6 +48,7 @@ module.exports = {
             res.send(user);
         }, data,userId)
     },
+    
     deleteUserByID: (req, res) => {
         const userId = req.params.id;
         User.deleteUserByID(function(err, user) {
