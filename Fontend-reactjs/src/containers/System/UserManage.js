@@ -142,25 +142,25 @@ class UserManage extends Component {
                 />
     }
 
-                <div className='tittle text-center'>Quan ly toa thuoc</div>
+                <div className='tittle text-center'>Quan ly Phong kham</div>
                 <div className='mx-1'>
                     <button className='btn btn-primary px-3'
                      onClick={()=>this.handleAddNewUser()}
                     >
                        
                         <i className='fas fa-plus'></i>
-                        ADD new toa thuoc
+                        ADD new phong kham
                     </button>
 
                 </div>
                 <div className='users-table mt-3 mx-1'>
                 <table id="customers">
                         <tr>
-                            <th>Email</th>
-                            <th>First name</th>
-                            <th>Last name</th>
-                            <th>Address</th>
-                            <th>Action</th>
+                            <th>id phong kham</th>
+                            <th>ten phong kham</th>
+                            <th>mo ta</th>
+                            <th>dia chi</th>
+                            <th>Actions</th>
                         </tr>
                      
                             {arrUsers && arrUsers.map((item, index)=> {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 
 import * as actions from "../../store/actions";
 import Navigator from '../../components/Navigator';
@@ -13,7 +14,8 @@ class Header extends Component {
     }
 
     render() {
-        const { processLogout, language } = this.props;
+        const { processLogout, language, userInfo} = this.props;
+        console.log('check ',userInfo);
 
         return (
             <div className="header-container">
@@ -23,6 +25,7 @@ class Header extends Component {
                 </div>
 
                 <div className='languages'>
+                    <span className='welcome'><FormattedMessage id="homeheader.welcome"/> {userInfo && userInfo.firstName ? userInfo.firstName: ''}!</span>
                     <span className={language === LANGUAGE.VI ? 'language-vi active' :'language-vi'} onClick={()=> this.handleChangeLanguage(LANGUAGE.VI)}>VN</span>
                     <span className={language === LANGUAGE.EN ? 'language-en active' :'language-en'} onClick={()=> this.handleChangeLanguage(LANGUAGE.EN)}>EN</span>
 
