@@ -1,49 +1,26 @@
-import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import "./login.css";
-
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-
+// import React, { useState, useEffect } from 'react'
+// // import axios from 'axios';
+// import { Form, useNavigate } from 'react-router-dom';
+const Login = () => {
   return (
-    <div className="Login">
-      <Form onSubmit={handleSubmit}>
-        <Form.Group size="lg" controlId="email">
-        {/* <Form.Label className="title">Login</Form.Label> */}
-        <h1 id="login-title">Login</h1>
-          <Form.Label>UserName</Form.Label>
-          <Form.Control
-            autoFocus
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group size="lg" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-        <Button block="true" size="lg" type="submit" disabled={!validateForm()}>
-          Submit
-        </Button>
-        <Button block="true" size="lg" type="submit" disabled={!validateForm()}>
-          Singin Up
-        </Button>
-      </Form>
-    </div>
-  );
+    <>
+      <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+      </div>
+      <form method='POST'>
+        <h3>Login Here</h3>
+        <label className="email">Username</label>
+        <input type="email" placeholder="ngocyen@gmail.com" id="email" name="email" />
+        <label for="password">Password</label>
+        <input type="password" placeholder="************************" id="password" name="password" />
+        <div className='button'>
+          <button type="submit" className='login'>Submit</button>
+          <button type="" className='sign-up'>Sign Up</button>
+        </div>
+      </form>
+
+    </>
+  )
 }
+export default Login
