@@ -17,12 +17,12 @@ app.use(bodyparser.json());
 // })
 
 
-//Users
+//Users (Người dùng - Đăng ký người dùng, chuyển đổi role, quản lý user)
 const userRoutes =require('./routes/user.route');
 app.use('/api/user', userRoutes);
 
 
-//SpecialistDoctor
+//SpecialistDoctor (Bác sĩ chuyên khoa,)
 const specialistDoctorRoutes =require('./routes/specialist_doctor.route');
 app.use('/api/specialistDoctor', specialistDoctorRoutes);
 
