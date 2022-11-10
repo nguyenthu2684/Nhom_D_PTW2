@@ -1,4 +1,4 @@
-const Login = require('../models/login.modules');
+const Login = require('../models/login.models');
 
 module.exports = {  
     signIn: (req, res) => {

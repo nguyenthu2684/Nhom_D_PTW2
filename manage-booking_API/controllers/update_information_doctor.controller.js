@@ -1,4 +1,4 @@
-const UpdateInformationDoctor = require('../models/update_information_doctor.modules');
+const UpdateInformationDoctor = require('../models/update_information_doctor.models');
 
 module.exports = {
     getAll: (req, res) => {
