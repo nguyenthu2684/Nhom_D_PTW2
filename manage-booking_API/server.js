@@ -17,28 +17,32 @@ app.use(bodyparser.json());
 // })
 
 
-//Users
+//Users (Người dùng - Đăng ký người dùng, chuyển đổi role, quản lý user)
 const userRoutes =require('./routes/user.route');
 app.use('/api/user', userRoutes);
 
 
-//SpecialistDoctor
+//SpecialistDoctor (Bác sĩ chuyên khoa,)
 const specialistDoctorRoutes =require('./routes/specialist_doctor.route');
 app.use('/api/specialistDoctor', specialistDoctorRoutes);
 
-//ExaminationCard
+//ExaminationCard (Tạo mã phiếu khám )
 const examinationCardRoutes =require('./routes/examinationCard.route');
 app.use('/api/examinationCard', examinationCardRoutes);
 
-//updateInformationDoctorController
+//updateInformationDoctorController (Cập nhật lại thông tin của bác sĩ sau khi đổi role và đăng nhập)
 const upInforDoctorRoute=require('./routes/update_information_doctor.route');
 app.use('/api/upInforDoctor', upInforDoctorRoute);
 
-//Prescription
+//Prescription (Toa thuốc - Thêm thuốc)
 const prescriptionRoutes =require('./routes/prescription.route');
 app.use('/api/prescription', prescriptionRoutes);
 
-//Prescription
+//MedicalTests(Phiếu xét nghiệm)
+const medicalTestsRoutes =require('./routes/medical_tests.route');
+app.use('/api/medicalTests', medicalTestsRoutes);
+
+//Log (Login thêm pass)
 const logRoutes =require('./routes/login.route');
 app.use('/api/log', logRoutes);
 

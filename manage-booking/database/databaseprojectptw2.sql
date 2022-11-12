@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 09, 2022 at 07:12 PM
+-- Generation Time: Nov 10, 2022 at 07:12 AM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -30,13 +30,13 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `drug`;
 CREATE TABLE IF NOT EXISTS `drug` (
   `idDrug` int NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
-  `medicine` text NOT NULL,
-  `instructions` text NOT NULL,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `medicine` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `instructions` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` int NOT NULL,
-  `type` text NOT NULL,
+  `type` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idDrug`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `drug`
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `examination_card` (
   `dateMedicalExamination` datetime NOT NULL,
   PRIMARY KEY (`idCard`),
   KEY `Fk_idUser` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `examination_card`
@@ -86,9 +86,9 @@ INSERT INTO `examination_card` (`idCard`, `idUser`, `dateCreate`, `dateMedicalEx
 DROP TABLE IF EXISTS `login`;
 CREATE TABLE IF NOT EXISTS `login` (
   `idUser` int NOT NULL,
-  `pass` text NOT NULL,
+  `pass` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `login`
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `medical_tests` (
   PRIMARY KEY (`primaryKeyVirtual`),
   KEY `Fk_idTest` (`idTest`),
   KEY `Fk_idCard` (`idCard`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `prescription` (
   PRIMARY KEY (`primaryKeyVirtual`),
   KEY `idCardFK` (`idCard`),
   KEY `Fk_idDrug` (`idDrug`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `prescription`
@@ -148,11 +148,11 @@ INSERT INTO `prescription` (`idCard`, `primaryKeyVirtual`, `idDrug`) VALUES
 DROP TABLE IF EXISTS `specialist`;
 CREATE TABLE IF NOT EXISTS `specialist` (
   `idSpecialist` int NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
-  `describe` text NOT NULL,
-  `image` text,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `describe` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`idSpecialist`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `specialist`
@@ -180,10 +180,10 @@ INSERT INTO `specialist` (`idSpecialist`, `name`, `describe`, `image`) VALUES
 DROP TABLE IF EXISTS `specialist_doctor`;
 CREATE TABLE IF NOT EXISTS `specialist_doctor` (
   `idCard` int NOT NULL,
-  `consulting` text NOT NULL,
-  `node` text NOT NULL,
+  `consulting` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `node` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idCard`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `specialist_doctor`
@@ -202,10 +202,10 @@ INSERT INTO `specialist_doctor` (`idCard`, `consulting`, `node`) VALUES
 DROP TABLE IF EXISTS `test`;
 CREATE TABLE IF NOT EXISTS `test` (
   `idTest` int NOT NULL AUTO_INCREMENT,
-  `nameTest` text NOT NULL,
+  `nameTest` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `room` int NOT NULL,
   PRIMARY KEY (`idTest`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `test`
@@ -234,9 +234,10 @@ DROP TABLE IF EXISTS `update_information_doctor`;
 CREATE TABLE IF NOT EXISTS `update_information_doctor` (
   `idUser` int NOT NULL,
   `idSpecialist` int NOT NULL,
-  `describe` text NOT NULL,
-  PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `describe` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`idUser`),
+  KEY `Fk_idSpecialist` (`idSpecialist`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `update_information_doctor`
@@ -255,17 +256,17 @@ INSERT INTO `update_information_doctor` (`idUser`, `idSpecialist`, `describe`) V
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `idUser` int NOT NULL AUTO_INCREMENT,
-  `userName` text NOT NULL,
-  `fullName` text NOT NULL,
-  `email` text NOT NULL,
-  `phone` text NOT NULL,
+  `userName` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fullName` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `birthday` date NOT NULL,
   `gender` int NOT NULL,
-  `address` text NOT NULL,
-  `image` text NOT NULL,
+  `address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `role` int NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -320,6 +321,7 @@ ALTER TABLE `specialist_doctor`
 -- Constraints for table `update_information_doctor`
 --
 ALTER TABLE `update_information_doctor`
+  ADD CONSTRAINT `Fk_idSpecialist` FOREIGN KEY (`idSpecialist`) REFERENCES `specialist` (`idSpecialist`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `idUser` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
