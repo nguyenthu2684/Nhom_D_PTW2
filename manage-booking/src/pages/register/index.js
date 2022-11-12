@@ -3,10 +3,13 @@ import { UploadOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import './register.css'
 import {
+
     Form,
     Input,
     Button,
     Radio,
+    Row,
+    Col,
     Select,
     Cascader,
     DatePicker,
@@ -19,10 +22,21 @@ import {
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 function Register() {
+    const [listImage, setListImage] = useState([])
+    const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
     const [componentDisabled, setComponentDisabled] = useState(true);
     const onFormLayoutChange = ({ disabled }) => {
         setComponentDisabled(disabled);
     };
+    const uploadImage = (event) => {
+        setListImage([...listImage, event.target.files[0]])
+    }
+    const deleteImage = (i) => {
+        setListImage([
+            ...listImage.slice(0, i),
+            ...listImage.slice(i + 1)
+        ])
+    }
     return (
         <>
 
@@ -38,9 +52,22 @@ function Register() {
                 onValuesChange={onFormLayoutChange}
 
             >
+                {/* user name */}
+                <Form.Item label="User name:">
+                    <Input />
+                </Form.Item>
+
+                {/* full name */}
+                <Form.Item label="Fullname:">
+                    <Input />
+                </Form.Item>
+
+                {/* email */}
                 <Form.Item label="Email:">
                     <Input />
                 </Form.Item>
+
+                {/* Password */}
                 <Form.Item label="Password:">
                     <Input.Password />
                 </Form.Item>
@@ -96,6 +123,7 @@ function Register() {
                 </Form.Item>
                 <Button className='submit'>Submit</Button>
             </Form>
+
         </>
     )
 }
