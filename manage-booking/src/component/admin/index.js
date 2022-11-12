@@ -1,7 +1,8 @@
 import React from 'react'
 import './admin.css'
 import { useState } from 'react';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import DoctorList from '../../pages/doctorList';
+import { HomeOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -25,7 +26,7 @@ const AdminPage = () => {
                         theme="light"
                         mode="inline"
                     >
-                        <Menu.Item key={1}>Doctor</Menu.Item>
+                        <Menu.Item key={1}><Link to="/admin/userManagement">User Manage</Link></Menu.Item>
                     </Menu>
 
                 </Sider>
@@ -34,8 +35,23 @@ const AdminPage = () => {
                         className="site-layout-sub-header-background"
                         style={{
                             padding: 0,
-                        }}
-                    />
+                            paddingBottom: 60,
+
+                        }}>
+                        <nav className="navbar-container">
+                            <Link to="/dashboard" className="navbar-icon"> <HomeOutlined /> </Link>
+                            <Link to="/" className="navbar-icon"> <BellOutlined /> </Link>
+                            <Link to="/" className="navbar-icon"> <UserOutlined /> </Link>
+
+
+
+                        </nav>
+                        <h1 style={{ color: 'white', paddingLeft: 20 }}>{splitted.slice(-1).toString().toUpperCase()}</h1>
+
+
+                        <BreadcrumbComponent />
+                    </Header>
+
                     <Content
                         style={{
                             margin: '24px 16px 0',
@@ -48,7 +64,11 @@ const AdminPage = () => {
                                 minHeight: 360,
                             }}
                         >
-                            content
+
+                            <Routes>
+                                <Route exact path="/admin/userManagement" element={<DoctorList />} />
+                            </Routes>
+
                         </div>
                     </Content>
                 </Layout>

@@ -8,10 +8,11 @@ const BreadcrumbComponent = () => {
     const capatilize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
     return (
       <div>
-        <Breadcrumb style={{ marginBottom: 10, marginTop: 20 }}>
+        <Breadcrumb style={{ marginBottom: 10, marginTop: -16, marginLeft: 24, color: 'white' }}>
           {pathnames.map((name, index) => {
             return (
-              <Breadcrumb.Item key={index}>{capatilize(name)}</Breadcrumb.Item>
+              <Breadcrumb.Item key={index}
+                style={{ color: "white" }}>{capatilize(name)}</Breadcrumb.Item>
             );
           })}
         </Breadcrumb>
