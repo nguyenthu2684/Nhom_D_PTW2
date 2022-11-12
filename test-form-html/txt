@@ -1,0 +1,54 @@
+import React from "react";
+import Header from "../../component/Header";
+import "./toaThuocPage.scss";
+
+// import ReactDOM from 'react-dom/client';
+
+class ToaThuoc extends React.Component {
+  render() {
+    return (
+      <div>
+        <div className="header">
+          <Header />
+        </div>
+        <div>
+          <div class="container">
+            <div class="row nhapMaToa">
+              <div class="col-md-2">
+                <label for="maToa" class="form-label-ma-toa"> MÃ TOA THUỐC: </label>
+              </div>
+              <div class="col-md-3">
+                <input type="email" class="form-control-ma-toa" id="email" placeholder="Nhập mã toa thuốc" name="email" />
+              </div>
+              <div class="col-md-5">
+                <button class="btn-tim">TÌM</button>
+              </div>
+            </div>
+            <div class="row bang-thuoc-border bang-thuoc">
+              <div class="col-md-6">
+                <div class="row bang-thuoc-border pt-2 pb-2">
+                  <div>Tên thuốc</div>
+                </div>
+                <div class="row bang-thuoc-border-right" id="tenThuoc"></div>
+              </div>
+              <div class="col-md-6">
+                <div class="row bang-thuoc-border pt-2 pb-2">
+                  <div>Số lượng</div>
+                </div>
+                <div class="row soLuong" id="soLuong"></div>
+              </div>
+            </div>
+            <div>
+              <div class="mb-3 mt-3">
+                <label for="comment">GHI CHÚ:</label>
+                <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+              </div>
+            </div>
+            {/* <button type="submit" class="btn btn-primary">Submit</button> */}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+export default ToaThuoc;
