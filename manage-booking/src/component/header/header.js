@@ -1,34 +1,42 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import React from 'react';
 import './header.css';
-function HeaderComponent() {
-  return (
-    <>
-     <Navbar bg="light" variant="light">
-        <Container>
-          <Navbar.Brand href="#home">
-            <img
-              alt=""
-              src="/logo.svg"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />{' '}
-            Logo
-          </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <Nav.Link href="#pricing">Pricicd ng</Nav.Link>
-            <Nav.Link href="#pricing">Đăng nhập</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-     
-    </>
-  );
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import logo from './img/logo.png';
+function HeaderComponent  ()  {
+    return (
+        <>
+       <div className='container'> 
+
+            <nav className="navbar navbar-expand-lg bg-white ">
+            <img id='logo' src={logo} alt={"logo"}/> 
+               
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a className="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Link</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="./">Link</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="./">Link</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="./"> <span className='icon'> <FontAwesomeIcon icon={faUser} /></span>   Đăng nhập </a>
+                        </li>
+                       
+                    </ul>
+                   
+                </div>
+            </nav>
+         
+            </div>
+        </>
+    );
 }
 
 export default HeaderComponent;
