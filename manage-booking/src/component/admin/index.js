@@ -1,12 +1,19 @@
 import React from 'react'
 import './admin.css'
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from "react-router-dom"
 import { useState } from 'react';
 import DoctorList from '../../pages/doctorList';
 import { HomeOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
+import BreadcrumbComponent from '../Breadcrumb';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 const AdminPage = () => {
+    const location = useLocation();
+    const { pathname } = location;
+    const capatilize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+    const splitted = pathname.split("/", -1);
     const [collapsed, setCollapsed] = useState(false);
     return (
         <>
