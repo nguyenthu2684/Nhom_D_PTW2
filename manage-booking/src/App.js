@@ -1,12 +1,12 @@
 // import logo from './logo.svg';
 // import './App.css';
-import ToaThuoc from './pages/toaThuoc/toaThuocPage';
+import BookingPage from "./pages/bookingfage/bookingPage";
 
 function App() {
   return (
 
     <>
-      <ToaThuoc />
+      <BookingPage />
     </>
   );
 }
