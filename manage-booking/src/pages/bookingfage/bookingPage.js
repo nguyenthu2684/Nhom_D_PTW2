@@ -80,16 +80,16 @@ class BookingPage extends React.Component {
         <div class="col-md-6 ">
             <div class="row">
                 <div class="col-md-2">
-                <img src="https://cdn.bookingcare.vn/fr/w200/2018/04/09/151800292142135730131997187173031663525568184320n.jpg" class="luoi" width="80" height="80" alt="#"></img>                
+                <img src="https://cdn.bookingcare.vn/fr/w200/2019/12/31/161245-pgs-vu-thi-thanh-thuy.jpg" class="luoi" width="80" height="80" alt="#"></img>                
                     <a href="#">xem thêm</a>
                 </div>
                 <div class="col-md-10">
                     <div class="thongTin">
-                        <div class="tenBacSi">Giáo sư, Tiến sĩ, Bác sĩ Trần Ngọc Ân</div>
+                        <div class="tenBacSi">Phó Giáo sư, Tiến sĩ Vũ Thị Thanh Thủy</div>
                         <div class="thongTinThem">Nguyên Trưởng khoa Cơ xương khớp, Bệnh viện Bạch Mai
-                            Chủ tịch Hội Thấp khớp học Việt Nam
-                            Giáo sư đầu ngành với gần 50 năm kinh nghiệm điều trị các bệnh lý liên quan đến Cơ xương khớp
-                            Bác sĩ khám cho người bệnh từ 14 tuổi trở lên</div>
+                        Nguyên Trưởng khoa Cơ - Xương - Khớp, Bệnh viện Bạch Mai
+Chủ tịch Hội loãng xương Hà Nội
+Bác sĩ nhận bệnh nhân từ 18 tuổi trở lên</div>
                     </div>
                 </div>
             </div>
