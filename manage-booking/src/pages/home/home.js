@@ -102,7 +102,7 @@ function HomePage() {
             </div>
             <div className='content-2'>
                 <div className='title-2'>
-                    <h3> Chuyên khoa phổ biển</h3>
+                    <h3> Chuyên khoa phổ biến</h3>
                     <button>
                         Xem thêm
                     </button>
