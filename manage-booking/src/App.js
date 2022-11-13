@@ -3,12 +3,14 @@
 import BookingPage from "./pages/bookingfage/bookingPage";
 
 function App() {
+
   return (
 
     <>
       <BookingPage />
     </>
   );
+}
 }
 
 export default App;

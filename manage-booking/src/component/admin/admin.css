@@ -14,4 +14,21 @@
 
 .ant-layout-sider-children {
     background-color: white;
+    margin-top: 27%;
+}
+
+.site-layout-sub-header-background {
+    padding-bottom: 7% !important;
+}
+
+.navbar-container {
+    position: absolute;
+    right: 7%;
+    top: 3%;
+}
+
+.navbar-icon {
+    font-size: 20px;
+    margin: 0 4px;
+    color: white;
 }
