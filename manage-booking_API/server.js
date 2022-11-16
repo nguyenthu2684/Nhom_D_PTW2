@@ -46,6 +46,10 @@ app.use('/api/medicalTests', medicalTestsRoutes);
 const logRoutes =require('./routes/login.route');
 app.use('/api/log', logRoutes);
 
+//post
+const postRoutes =require('./routes/post.route');
+app.use('/api/post', postRoutes);
+
 //bottom
 app.listen(port, function() {
   console.log('Server listening on port ', port);

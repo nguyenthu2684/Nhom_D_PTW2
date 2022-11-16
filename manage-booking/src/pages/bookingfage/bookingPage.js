@@ -1,10 +1,12 @@
 
 import React from "react";
-// import Header from "../../component/Header";
+// import HeaderComponent from "../../component/header/header";
+// import FooterComponent from "../../component/footer/footer";
 import "./bookingPage.scss";
 class BookingPage extends React.Component {
     render() {
         return (<>
+        {/* <HeaderComponent></HeaderComponent> */}
 <div class="container">
      <div class="imformation">
         <div class="tenKhoa"><h2>Cơ Xương Khớp</h2></div>
@@ -115,6 +117,7 @@ Bác sĩ nhận bệnh nhân từ 18 tuổi trở lên</div>
         
      </div>
         </div>
+        {/* <FooterComponent></FooterComponent> */}
             </>            
         );
       }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 10, 2022 at 07:12 AM
+-- Generation Time: Nov 15, 2022 at 04:29 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `databaseprojectptw2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `idCate` int NOT NULL AUTO_INCREMENT,
+  `nameCate` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `describeCate` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`idCate`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`idCate`, `nameCate`, `describeCate`) VALUES
+(1, 'Y khoa', 'Tổng hợp những thông tin về y học hiện đại, cổ truyền cùng với sự kếnt hợp đồng tây y, những tin tức mới nhất về các diễn biến, dịch bệnh hay sự phát triển của các mầm mống bệnh mới. Những công tác phát hiện tìm hiểu và chế tạo vacxin phòng và chữa bệnh'),
+(2, 'Xã hội', 'Cập nhật những thông tin xã hội mới nhất ảnh hưởng đến nền kinh tế, khoa học, y khoa trên Thế Giới');
 
 -- --------------------------------------------------------
 
@@ -111,7 +133,34 @@ CREATE TABLE IF NOT EXISTS `medical_tests` (
   PRIMARY KEY (`primaryKeyVirtual`),
   KEY `Fk_idTest` (`idTest`),
   KEY `Fk_idCard` (`idCard`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post`
+--
+
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE IF NOT EXISTS `post` (
+  `idPost` int NOT NULL AUTO_INCREMENT,
+  `namePost` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `idCate` int NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `createPost` date NOT NULL,
+  PRIMARY KEY (`idPost`),
+  KEY `FK_IdCate` (`idCate`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`idPost`, `namePost`, `idCate`, `content`, `img`, `createPost`) VALUES
+(1, 'Tạp chí Y học Cộng đồng', 1, '   Tạp chí Y học Cộng đồng (Journal of Community Medicine) là Tạp chí học thuật trong lĩnh vực Y học, có bình duyệt của Viện sức Khỏe Cộng đồng-Tổng hội Y học Việt Nam. Tạp chí là diễn đàn khoa học cho các học viên, nghiên cứu sinh, giảng viên, nhà khoa học trong và ngoài nước công bố, trao đổi nghiên cứu và học thuật trong khối ngành sức khỏe.\r\n\r\n   Tạp chí được Bộ TTTT cấp phép xuất bản từ năm 2013 bằng ngôn ngữ tiếng việt và tiếng Anh, được Hội đồng chức danh Giáo sư nhà nước và khối ngành sức khỏe đưa vào danh sách các tạp chí khoa học được tính điểm công trình. Đây là tạp chí khoa học uy tín, có bình duyệt, công bố những công trình nghiên cứu gốc, bài tổng quan,  bài bình luận, bài giới thiệu sách, tài liệu và những tin tức, sự kiện liên quan đến tất cả các khía cạnh trong lĩnh vực nghiên cứu, phổ biến chính sách, giáo dục, thực hành, đào tạo, trong lĩnh vực y dược học, y học lâm sàng, y học dự phòng và y tế công cộng.\r\n\r\n   Tạp chí Y học Cộng đồng đã được chấp nhận làm thành viên của tổ chức Crossref – Cơ quan đăng ký nhận dạng đối tượng kỹ thuật số (Digital Object Identifier – DOI) và chính thức của tổ chức DOI quốc tế (International DOI Foundation). Việc này cho phép kết nối các bài báo xuất bản trên tạp chí với mạng lưới toàn cầu gồm 15.072 thành viên từ 118 quốc gia trên thế giới. Tất cả các bài báo được xuất bản sẽ được gắn mã DOI nhằm tăng cường tính dễ tìm kiếm, truy cập, kết nối, trích dẫn của các công trình được công bố trên tạp chí.\r\n\r\nGiấy phép hoạt động báo chí in số 229/GP-BTTTT cấp ngày 19/6/2013\r\nTần suất phát hành: 06 số/năm (không bao gồm số tiếng Anh, phụ bản, số chuyên đề)\r\nNgôn ngữ xuất bản: Tiếng Việt và Tiếng Anh\r\nISSN: 2354 - 0613\r\nDOI prefix: 10.52163\r\nWebside: tapchiyhcd.vn ', '', '2022-11-15'),
+(2, 'Nghiên cứu y học ở Việt Nam: Đặc điểm, thiếu sót, và sai sót', 1, '   Sự có mặt của y học Việt Nam trên trường quốc tế còn rất khiêm tốn, bởi vì phần lớn các nghiên cứu y học ở Việt Nam được công bố trong các tạp chí y học trong nước. Trong một phân tích tổng hợp gần đây của tác giả Phạm Duy Hiển, trong thời gian 1995 đến 2004, trung bình hàng năm giới nghiên cứu y khoa Việt Nam công bố khoảng 1000 bài báo y sinh học trong các tập san y học trong và ngoài nước; trong số này chỉ có 5 bài trong các tập san y học quốc tế [1]. Nói cách khác, chỉ có khoảng 0,5% nghiên cứu y học từ Việt Nam có mặt trên các diễn đàn y học quốc tế. Con số này còn rất khiêm tốn nếu so với các nước lân cận như Thái Lan hay Mã Lai.\r\n\r\nCó nhiều lí do tại sao các nghiên cứu chỉ công bố trên các tạp chí địa phương, kể cả sự liên quan của nghiên cứu đối với tình hình và bối cảnh Việt Nam, soạn thảo bằng tiếng Việt, hay không được chấp nhận cho công bố trên các tập san quốc tế. Nhưng hoạt động khoa học là một lĩnh vực phi biên giới, cho nên dù là nghiên cứu từ Việt Nam, nhưng nếu các nghiên cứu có chất lượng tốt (như ý tưởng mới hay phương pháp nghiên cứu đúng tiêu chuẩn khoa học) thì các nghiên cứu đó vẫn có giá trị khoa học, và vẫn có thể xuất hiện trong các tập san y học quốc tế. Do đó, vấn đề chất lượng các nghiên cứu đã công bố trong các tạp chí y học ở Việt Nam cần được đặt ra để tìm một hướng đi tích cực hơn.\r\n\r\nNgười viết bài này đã điểm qua một số bài báo khoa học xuất hiện trong các tạp chí y học thuộc trường Đại học Y Hà Nội, Đại học Y Dược Thành phố Hồ Chí Minh, Tạp chí Y học thực hành, Tạp chí Nghiên cứu Y học, và Tạp chí Dược học. Các bài báo này được công bố trong khoảng thời gian từ 2001 đến 2006. Trong mỗi số và mỗi tạp chí, tôi ngẫu nhiên chọn ra 3 bài ở mục “nghiên cứu y học” (hay tương tự). Tất cả có 56 bài được chọn, và tôi đọc tất cả và ghi chú những điểm cần lưu ý về ý tưởng, phương pháp và cách trình bày kết quả nghiên cứu.\r\n\r\nĐiểm qua các bài báo này, tôi thấy các nhiều nhà nghiên cứu trong nước đã có những công trình nghiên cứu có ích với ý tưởng hay, có thể ứng dụng vào việc chăm sóc bệnh nhân. Chẳng hạn như những công trình nghiên cứu về HIV và so sánh phương pháp xét nghiệm sinh hóa (do các nhà nghiên cứu thuộc Đại học Y Dược TPHCM tiến hành) hay nghiên cứu về độ tuổi mãn kinh và các yếu tố liên quan đến mãn kinh (Đại học Y Hà Nội) mà kết quả rất thú vị và có thể khai triển thêm thành một nghiên cứu có ích cho bệnh nhân. Ngoài ra, còn có một số nghiên cứu mang tính phát triển phương pháp xét nghiệm và chẩn đoán mới với kết quả rất đáng khích lệ. Trong điều kiện hạn hẹp kinh phí và cơ sở vật chất mà các đồng nghiệp trong nước đã tiến hành những nghiên cứu qui mô lớn và công phu như thế quả là một nỗ lực đáng trân trọng. Tôi thiết nghĩ những công trình như thế đáng lẽ phải có mặt trong các tập san y học uy tín trên thế giới, nhưng rất tiếc điều đó chưa xảy ra.\r\n\r\nVấn đề đặt ra là tại sao các nghiên cứu như thế không có mặt trên các diễn đàn y học quốc tế? Điểm qua các nghiên cứu này một cách cẩn thận, tôi cho rằng nguyên nhân là do thiết kế nghiên cứu chưa được thỏa đáng và chưa có hệ thống. Ngoài ra, còn có rất nhiều nghiên cứu với khá nhiều thiếu sót và sai lầm, vì khiếm khuyết trong phương pháp nghiên cứu và do đó chất lượng không mấy cao. Có khi những thiếu sót và sai lầm này rất nghiêm trọng đến độ kết quả nghiên cứu rất khó diễn dịch, và có thể nói là không có giá trị khoa học gì cả. Trong bài viết này, tôi sẽ nêu lên một số thiếu sót phổ biến nhất và sẽ đưa ra một số đề nghị để nâng cao chất lượng nghiên cứu y học ở trong nước.', '', '2022-11-15'),
+(3, 'Công ty KCD Việt Nam chậm đóng BHXH cho người lao động', 2, 'Theo đó, Chủ tịch UBND tỉnh Bắc Giang vừa ban hành Quyết định xử phạt vi phạm hành chính trong lĩnh vực Bảo hiểm xã hội đối với Công ty TNHH KCD Việt Nam.\nCụ thể, qua kiểm tra, Đoàn thanh tra phát hiện Công ty TNHH KCD Việt Nam chậm đóng BHXH bắt buộc, BHTN. Tại thời điểm lập Biên bản vi phạm hành chính (hồi 16h00’ ngày 26/9/2022), tổng số tiền BHXH bắt buộc, BHTN Công ty phải đóng là gần 2,5 tỷ đồng, chưa bao gồm tiền lãi chậm đóng, nhưng Công ty chưa đóng.\n\nBên cạnh đó, Đoàn thanh tra phát hiện Công ty TNHH KCD Việt Nam đóng BHYT không đủ số tiền phải đóng (tổng số tiền phải đóng là gần 350 triệu đồng), chưa bao gồm tiền lãi, nhưng Công ty chưa đóng.\n\nTừ những vi phạm trên, Công ty TNHH KCD Việt Nam đã bị xử phạt số tiền 220 triệu đồng. Đồng thời, UBND tỉnh Bắc Giang yêu cầu Công ty TNHH KCD Việt Nam phải thực hiện các biện pháp khắc phục hậu quả, đóng đủ số tiền BHXH bắt buộc, BHTN phải đóng cho cơ quan BHXH số tiền gần 2,5 tỷ đồng. Đồng thời nộp khoản tiền lãi bằng 2 lần mức lãi suất đầu tư quỹ BHXH bình quân của năm trước liền kề tính trên số tiền, thời gian không đóng.\n\nCông ty phải nộp toàn bộ số tiền BHYT chưa đóng đối với cơ quan BHXH, số tiền gần 350 triệu đồng và số tiền lãi của số tiền BHYT đóng thiếu bằng 2 lần mức lãi suất thị trường liên ngân hàng...\n', 'undefined', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -303,6 +352,12 @@ ALTER TABLE `login`
 ALTER TABLE `medical_tests`
   ADD CONSTRAINT `Fk_idCard` FOREIGN KEY (`idCard`) REFERENCES `examination_card` (`idCard`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `Fk_idTest` FOREIGN KEY (`idTest`) REFERENCES `test` (`idTest`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `FK_IdCate` FOREIGN KEY (`idCate`) REFERENCES `category` (`idCate`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `prescription`
