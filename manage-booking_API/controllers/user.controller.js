@@ -60,5 +60,14 @@ module.exports = {
             res.send(user);
         }, userId)
     },
-    
+    getUserDoctor: (req, res) => {
+        User.getUserDoctor(function(err, user) {
+            if (err) {
+                console.log('Create doctor ', err);
+                res.send(err);
+            }
+            console.log('Res: ', user);
+            res.send(user);
+        })
+    },
 }

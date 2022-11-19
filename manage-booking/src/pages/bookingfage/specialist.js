@@ -3,7 +3,7 @@ import axios from "../../axios";
 import React from "react";
 // import Header from "../../component/Header";
 import "./bookingPage.scss";
-class BookingPage extends React.Component {
+class Specialist extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -138,75 +138,11 @@ class BookingPage extends React.Component {
                   </div>
                 </div>
               );
-            })}
-
-          {/* <div class="row bsi">
-            <div class="col-md-6 ">
-              <div class="row">
-                <div class="col-md-2">
-                  <img
-                    src="https://cdn.bookingcare.vn/fr/w200/2019/12/31/161245-pgs-vu-thi-thanh-thuy.jpg"
-                    class="luoi"
-                    width="80"
-                    height="80"
-                    alt="#"
-                  ></img>
-                  <a href="#">xem thêm</a>
-                </div>
-                <div class="col-md-10">
-                  <div class="thongTin">
-                    <div class="tenBacSi">
-                      Phó Giáo sư, Tiến sĩ Vũ Thị Thanh Thủy
-                    </div>
-                    <div class="thongTinThem">
-                      Nguyên Trưởng khoa Cơ xương khớp, Bệnh viện Bạch Mai
-                      Nguyên Trưởng khoa Cơ - Xương - Khớp, Bệnh viện Bạch Mai
-                      Chủ tịch Hội loãng xương Hà Nội Bác sĩ nhận bệnh nhân từ
-                      18 tuổi trở lên
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 ">
-              <div class="dropdown">
-                <button
-                  type="button"
-                  class="btn dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                >
-                  Thứ 2 - 14/11
-                </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Thứ 3 - 15/11
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Thứ 4 - 16/11
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Thứ 5 - 17/11
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <p>LỊCH KHÁM</p>
-              <div class="row">
-                <div class="col-md-3 bttime">08:00 - 08:30</div>
-                <div class="col-md-3 bttime">08:30 - 09:00</div>
-                <div class="col-md-3 bttime">09:00 - 09:30</div>
-              </div>
-            </div>
-          </div> */}
+            })}          
         </div>
       </>
     );
   }
 }
 
-export default BookingPage;
+export default Specialist;

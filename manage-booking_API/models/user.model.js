@@ -83,4 +83,16 @@ User.deleteUserByID = function (result, userId) {
       }
     );
   }
+
+  User.getUserDoctor = function(result) {
+    dbConnection.query("SELECT * FROM update_information_doctor INNER JOIN users ON users.idUser = update_information_doctor.idUser INNER JOIN specialist ON specialist.idSpecialist = update_information_doctor.idSpecialist" , function(err, res) {
+        if (err) {
+            console.log("Error: ", err);
+            result(null, err);
+        } else {
+            console.log("User: ", res);
+            result(null, res);
+        }
+    });   
+}
 module.exports = User;

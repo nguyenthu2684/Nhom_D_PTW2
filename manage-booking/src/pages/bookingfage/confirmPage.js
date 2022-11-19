@@ -1,7 +1,6 @@
 // import axios from "axios";
 import axios from "../../axios";
 import React from "react";
-// import Header from "../../component/Header";
 import "./bookingPage.scss";
 class BookingPage extends React.Component {
   constructor(props) {
@@ -33,7 +32,7 @@ class BookingPage extends React.Component {
             </div>
             <div class="noiDung">
               <p>
-                {/* <b>{item.name}</b> */}
+                <b>Bác sĩ Cơ Xương Khớp giỏi</b>
                 Danh sách các bác sĩ uy tín đầu ngành Cơ Xương Khớp tại Việt
                 Nam:
                 <ul class="param">
@@ -84,7 +83,7 @@ class BookingPage extends React.Component {
             bookingData.map((item, index) => {
               return (
                 <div class="row bsi">
-                  <div class="col-md-6 col-left">
+                  <div class="col-md-6">
                     <div class="row ">
                       <div class="col-md-2">
                         <img
@@ -102,7 +101,7 @@ class BookingPage extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6 col-right">
+                  <div class="col-md-6">
                     <div class="dropdown">
                       <button
                         type="button"
