@@ -72,6 +72,10 @@ app.use("/api/log", logRoutes);
 const postRoutes = require("./routes/post.route");
 app.use("/api/post", postRoutes);
 
+//post
+const specialistRoutes =require('./routes/specialist.route');
+app.use('/api/specialist', specialistRoutes);
+
 //bottom
 app.listen(port, function () {
   console.log("Server listening on port ", port);
