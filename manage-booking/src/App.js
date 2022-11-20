@@ -2,15 +2,16 @@
 // import './App.css';
 import FooterComponent from "./component/footer/footer";
 import HeaderComponent from "./component/header/header";
-import BookingPage from "./pages/bookingfage/bookingPage";
-
+// import Specialist from "./pages/bookingfage/specialist/specialist";
+// import BookingPage from "./pages/bookingfage/bookingPage";
+import ConfirmPage from "./pages/bookingfage/imformation/confirmPage";
 function App() {
 
   return (
 
     <>
     <HeaderComponent></HeaderComponent>
-      <BookingPage />
+      <ConfirmPage />
       <FooterComponent></FooterComponent>
     </>
   );

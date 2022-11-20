@@ -4,6 +4,7 @@ import React from "react";
 // import Header from "../../component/Header";
 import "./bookingPage.scss";
 class BookingPage extends React.Component {
+ 
   constructor(props) {
     super(props);
     this.state = {
@@ -96,7 +97,7 @@ class BookingPage extends React.Component {
                             {item.degree} {item.fullName}
                           </a>
                           <div class="thongTinThem">
-                          {item.describe}
+                          {/* {item.describe} */}
                           </div>
                         </div>
                       </div>
