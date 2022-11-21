@@ -19,7 +19,7 @@ const DoctorSentEmail = () => {
     return (
         <section>
             <div className='doctor-form'>
-                <h1>Contact US</h1>
+                <h1>WE DOCTOR</h1>
                 <form ref={form} onSubmit={sendEmail}>
                     <div className='txtb'>
                         <label>Name Paition</label>
