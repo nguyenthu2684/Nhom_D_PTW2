@@ -1,10 +1,10 @@
 import React from 'react';
-import  DoctorSentEmail  from './components/DoctorSentEmail';
+import SentEmaiDoctor from './components/SentEmailDoctor';
 
 function App() {
   return (
     <div>
-      <DoctorSentEmail/>
+      <SentEmaiDoctor/>
     </div>
   );
 }
