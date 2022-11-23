@@ -1,0 +1,34 @@
+.logo {
+    /* background-image: url(../../asset/download.png); */
+    height: 30%;
+    margin: 16px;
+    /* background: rgba(255, 255, 255, 0.3); */
+    background-image: url(../../asset/download.png);
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.site-layout-background {
+    background: #fff;
+}
+
+.ant-layout-sider-children {
+    background-color: white;
+    margin-top: 27%;
+}
+
+.site-layout-sub-header-background {
+    padding-bottom: 7% !important;
+}
+
+.navbar-container {
+    position: absolute;
+    right: 7%;
+    top: 3%;
+}
+
+.navbar-icon {
+    font-size: 20px;
+    margin: 0 4px;
+    color: white;
+}
