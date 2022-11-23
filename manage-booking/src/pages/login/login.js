@@ -59,7 +59,6 @@ class Login extends Component {
             />
             <span
               onClick={() => {this.handelShowHidePassWord() }}>
-              {/* <FontAwesomeIcon  icon={faEye}  id='eye'/>     */}
               <FontAwesomeIcon icon={this.state.isShowPassword ? faEye : faEyeSlash}  id='eye'/>         
             </span>
           </div>
