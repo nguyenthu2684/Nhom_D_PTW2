@@ -105,8 +105,18 @@
   .button{
     display: flex;
   }
-  .login{
+  .btn-login {
     margin-right: 25px;
-  }
-  
+}
+.custom-input-password {
+    position: relative;
+}
+
+#eye {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    top: 15px;
+  background-color: #d63212;
+}
 }

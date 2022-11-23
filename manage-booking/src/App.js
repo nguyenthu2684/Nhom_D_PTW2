@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import './App.css';
 import './pages/login/login.css';
 import './pages/login/login'
@@ -12,10 +12,11 @@ function App() {
     <div className='App'>{
       <Login />
     }
-
     </div>
 
   );
 }
+
+
 
 export default App;
