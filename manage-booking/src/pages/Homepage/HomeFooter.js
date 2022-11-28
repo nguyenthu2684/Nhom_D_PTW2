@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
-
-
-
-
-
-class HomeFooter extends Component {
-
+import React from 'react';
+// import { connect } from 'react-redux';
+// import { FormattedMessage } from 'react-intl';
+class HomeFooter extends React.Component {
     render() {
         
         return (
@@ -20,14 +14,15 @@ class HomeFooter extends Component {
 
 }
 
-const mapStateToProps = state => {
-    return {
-    };
-};
+export default(HomeFooter)
+// const mapStateToProps = state => {
+//     return {
+//     };
+// };
 
-const mapDispatchToProps = dispatch => {
-    return {
-    };
-};
+// const mapDispatchToProps = dispatch => {
+//     return {
+//     };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeFooter);
+// export default connect(mapStateToProps, mapDispatchToProps)(HomeFooter);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
 
@@ -32,14 +32,15 @@ class About extends Component {
 
 }
 
-const mapStateToProps = state => {
-    return {
-    };
-};
+export default(About)
+// const mapStateToProps = state => {
+//     return {
+//     };
+// };
 
-const mapDispatchToProps = dispatch => {
-    return {
-    };
-};
+// const mapDispatchToProps = dispatch => {
+//     return {
+//     };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+// export default connect(mapStateToProps, mapDispatchToProps)(About);

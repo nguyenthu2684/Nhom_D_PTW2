@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import './MedicalFacility.scss';
 
 import { FormattedMessage } from 'react-intl';
@@ -77,15 +77,17 @@ class MedicalFacility extends Component {
 
 }
 
-const mapStateToProps = state => {
-    return {
-        isLoggedIn: state.user.isLoggedIn
-    };
-};
+export default(MedicalFacility)
 
-const mapDispatchToProps = dispatch => {
-    return {
-    };
-};
+// const mapStateToProps = state => {
+//     return {
+//         isLoggedIn: state.user.isLoggedIn
+//     };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MedicalFacility);
+// const mapDispatchToProps = dispatch => {
+//     return {
+//     };
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(MedicalFacility);

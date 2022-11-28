@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HomeHeader.scss';
 import { FormattedMessage } from 'react-intl';
-import {LANGUAGE} from '../../utils';
+// import { utils } from 'react-bootstrap';
+import {LANGUAGE} from '../../util';
 
 import {changeLanguageApp} from '../../store/actions';
-
-
 class HomeHeader extends Component {
 
     changeLanguage= (language) => {
@@ -146,7 +145,7 @@ class HomeHeader extends Component {
     }
 
 }
-
+// export default(HomeHeader)
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
