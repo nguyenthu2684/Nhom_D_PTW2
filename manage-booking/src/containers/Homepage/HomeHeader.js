@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import './HomeHeader.scss';
 import { FormattedMessage } from 'react-intl';
 import {LANGUAGE} from '../../utils';
+import DetailDoctor from '../Paitent/Doctor/DetailDoctor';
 
 import {changeLanguageApp} from '../../store/actions';
+import { NavLink } from 'react-router-dom';
 
 
 class HomeHeader extends Component {
@@ -12,6 +14,10 @@ class HomeHeader extends Component {
     changeLanguage= (language) => {
         this.props.changeLanguageAppRedux(language);
     }
+
+    // handViewDetailDoctor = (doctor) => {
+    //    this.props.history.push(DetailDoctor);
+    // }
 
     render() {
         let language = this.props.language;
@@ -27,7 +33,7 @@ class HomeHeader extends Component {
                         </div>
                     <div className='center-content'>
                         <div className='child-content'>
-                             <div><b><FormattedMessage id="homeheader.speciality"></FormattedMessage></b></div>
+                             <NavLink to='/detailDoctor'><b><FormattedMessage id="homeheader.speciality"></FormattedMessage></b></NavLink>
                              <div className='subs-title'>
                              <div><b><FormattedMessage id="homeheader.findspecialityDoctor"></FormattedMessage></b></div>
 
@@ -35,7 +41,7 @@ class HomeHeader extends Component {
                         </div>
                          <div className='child-content'>
                              <div><b>
-                             <div><b><FormattedMessage id="homeheader.HealthFacilities"></FormattedMessage></b></div>
+                             <div><FormattedMessage id="homeheader.HealthFacilities"></FormattedMessage></div>
                             </b></div>
                              <div className='subs-title'>
                              <div><b><FormattedMessage id="homeheader.chosseClinic"></FormattedMessage></b></div>
