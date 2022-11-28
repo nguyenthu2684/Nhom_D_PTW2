@@ -8,7 +8,7 @@ const DoctorSentEmail = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_cbbcwjg', 'template_348v2zi', form.current, '_Xx00E0O3kVL8jA6R')
+        emailjs.sendForm('service_cbbcwjg', 'template_l4kzb4m', form.current, '_Xx00E0O3kVL8jA6R')
             .then((result) => {
                 console.log(result.text);
             }, (error) => {
