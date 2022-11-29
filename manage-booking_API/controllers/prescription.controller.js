@@ -24,6 +24,18 @@ module.exports = {
         },userId)
     },
 
+    getByIdLK: (req, res) => {
+        const userId = req.params.id;
+        Prescription.getByIdLK(function(err, prescription) {
+            console.log('controller');
+            if (err) {
+                res.send(err);
+            }
+            console.log('Res: ', prescription);
+            res.send(prescription);
+        },userId)
+    },
+
     addPrescription: (req, res) => {
         data = req.body;
         console.log(JSON.stringify(data));
