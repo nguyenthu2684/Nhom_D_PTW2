@@ -60,14 +60,15 @@ module.exports = {
             res.send(user);
         }, userId)
     },
-    getUserDoctor: (req, res) => {
-        User.getUserDoctor(function(err, user) {
+    getUserDoctorByIdSpe: (req, res) => {
+        const idSpe = req.params.id;
+        User.getUserDoctorByIdSpe(function(err, user) {
             if (err) {
                 console.log('Create doctor ', err);
                 res.send(err);
             }
             console.log('Res: ', user);
             res.send(user);
-        })
+        },idSpe)
     },
 }

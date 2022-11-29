@@ -3,7 +3,7 @@ const dbConnection = require('../configs/db.config');
 const UpdateInformationDoctor = function(updateInformationDoctor) {
     this.idUser  = updateInformationDoctor.idUser ;
     this.idSpecialist = updateInformationDoctor.idSpecialist;
-    this.describe = updateInformationDoctor.describe;
+    this.describeDoc = updateInformationDoctor.describeDoc;
 }
 
 UpdateInformationDoctor.getAll = function(result) {
@@ -31,7 +31,7 @@ UpdateInformationDoctor.getById = function(result, userId) {
 }
 
 UpdateInformationDoctor.addUpdateInformationDoctor = function(result, data) {  
-    dbConnection.query('insert into `update_information_doctor`(`idUser`, `idSpecialist`, `describe`) value('+ data.idUser +','+ data.idSpecialist + ',"'+ data.describe +'")', function(err, res) {
+    dbConnection.query('insert into `update_information_doctor`(`idUser`, `idSpecialist`, `describeDoc`) value('+ data.idUser +','+ data.idSpecialist + ',"'+ data.describeDoc +'")', function(err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
@@ -43,7 +43,7 @@ UpdateInformationDoctor.addUpdateInformationDoctor = function(result, data) {
 }
 
 UpdateInformationDoctor.updateUpdateInformationDoctor = function(result, data, userId) {  
-    dbConnection.query('update `update_information_doctor` set `idSpecialist`= "'+ data.idSpecialist +'",`describe`= "'+ data.describe +'" WHERE `idUser` = '+ userId, function(err, res) {
+    dbConnection.query('update `update_information_doctor` set `idSpecialist`= "'+ data.idSpecialist +'",`describeDoc`= "'+ data.describeDoc +'" WHERE `idUser` = '+ userId, function(err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);

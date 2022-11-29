@@ -2,8 +2,8 @@ const dbConnection = require('../configs/db.config');
 
 const Specialist = function(specialist) {
     this.name = specialist.name;
-    this.describe = specialist.describe;
-    this.image = specialist.image;
+    this.describeSpe = specialist.describeSpe;
+    this.imageSpeci = specialist.imageSpeci;
 }
 
 Specialist.getAll = function(result) {

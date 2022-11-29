@@ -8,7 +8,7 @@ const User = function(user) {
     this.birthday = new Date();
     this.gender = user.gender;
     this.address = user.address;
-    this.image = user.image;
+    this.imageUser = user.imageUser;
     this.role = user.role;
 }
 
@@ -37,7 +37,7 @@ User.getUserById = function(result, userId) {
 }
 
 User.addUser = function(result, data) {  
-    dbConnection.query('insert into `users`(`userName`, `fullName`, `email`, `phone`, `birthday`, `gender`, `address`, `image`, `role`) value("'+ data.userName +'","'+ data.fullName + '","'+ data.email +'","'+ data.phone +'","'+ data.birthday +'","'+ data.gender +'","' + data.address +'","'+ data.image +'","3")', function(err, res) {
+    dbConnection.query('insert into `users`(`userName`, `fullName`, `email`, `phone`, `birthday`, `gender`, `address`, `imageUser`, `role`) value("'+ data.userName +'","'+ data.fullName + '","'+ data.email +'","'+ data.phone +'","'+ data.birthday +'","'+ data.gender +'","' + data.address +'","'+ data.imageUser +'","3")', function(err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
@@ -58,7 +58,7 @@ User.updateUser = function(result, data, userId) {
 //   const second = d.getSeconds();
 //   const ymd = year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second;
 
-    dbConnection.query('update `users` set `userName`= "'+ data.userName +'",`email`= "'+ data.email +'",`phone`= "'+ data.phone +'",`gender`= "'+ data.gender +'",`address`= "'+ data.address +'",`image`= "'+ data.image +'",`role`= "'+ data.role +'" WHERE `idUser`= "'+ userId +'"', function(err, res) {
+    dbConnection.query('update `users` set `userName`= "'+ data.userName +'",`email`= "'+ data.email +'",`phone`= "'+ data.phone +'",`gender`= "'+ data.gender +'",`address`= "'+ data.address +'",`imageUser`= "'+ data.imageUser +'",`role`= "'+ data.role +'" WHERE `idUser`= "'+ userId +'"', function(err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
@@ -71,7 +71,7 @@ User.updateUser = function(result, data, userId) {
 
 User.deleteUserByID = function (result, userId) {
     dbConnection.query(
-      "delete from users where idUser=" + userId,
+      'DELETE FROM `users` WHERE `idUser`=' + userId,
       function (err, res) {
         if (err) {
           console.log("Error: ", err);
@@ -84,8 +84,8 @@ User.deleteUserByID = function (result, userId) {
     );
   }
 
-  User.getUserDoctor = function(result) {
-    dbConnection.query("SELECT * FROM update_information_doctor INNER JOIN users ON users.idUser = update_information_doctor.idUser INNER JOIN specialist ON specialist.idSpecialist = update_information_doctor.idSpecialist" , function(err, res) {
+  User.getUserDoctorByIdSpe = function(result, idSpecia) {
+    dbConnection.query("SELECT * FROM update_information_doctor INNER JOIN users ON users.idUser = update_information_doctor.idUser INNER JOIN specialist ON specialist.idSpecialist = update_information_doctor.idSpecialist where specialist.idSpecialist = " + idSpecia, function(err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
