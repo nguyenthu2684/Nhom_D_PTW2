@@ -96,7 +96,7 @@ class HomeHeader extends Component {
                 <div className='tittle2'>
                 <div><b><FormattedMessage id="homeheader.allCare"></FormattedMessage></b></div>
                     </div>       
-                <div className='search'><i className='fas fa-search'></i><input type='text' placeholder='Tim phong kham benh'/></div>
+                <div className='search'><i className='fas fa-search'></i><input type='text' placeholder='Tìm phòng khám bệnh'/></div>
                 </div>
                 <div className='content-down'>
                 <div className='options'>
