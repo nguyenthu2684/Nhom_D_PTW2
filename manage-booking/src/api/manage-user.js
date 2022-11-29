@@ -1,5 +1,4 @@
 import request from "../util/request";
-import axios from "axios";
 
 const URL = "http://localhost:5000/api/user";
 

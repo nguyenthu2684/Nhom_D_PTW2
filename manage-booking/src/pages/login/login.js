@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './login.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import {login} from './login.service'
 
 class Login extends Component {
   constructor(props) {
@@ -27,6 +28,8 @@ class Login extends Component {
   handelLogin = () => {
     console.log('username: ', this.state.username, 'password: ', this.state.password)
     console.log('all state', this.state)
+
+     login(this.state.username, this.state.password);
   }
   handelShowHidePassWord = () => {
     this.setState({
@@ -63,8 +66,8 @@ class Login extends Component {
             </span>
           </div>
           <div className='button'>
-            <button type="submit" className='btn-login' onClick={() => { this.handelLogin() }}>Submit</button>
-            <button type="" className='sign-up'>Sign Up</button>
+            <button type="button" className='btn-login' onClick={() => { this.handelLogin() }}>Submit</button>
+            <button type="button" className='sign-up'>Sign Up</button>
           </div>
         
           
