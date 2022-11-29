@@ -4,10 +4,12 @@ import React from "react";
 // import Header from "../../component/Header";
 import "./bookingPage.scss";
 class BookingPage extends React.Component {
+  //Khai báo
   constructor(props) {
     super(props);
     this.state = {
       bookingData: [],
+      addBooking: [],
       custonText: [],
       header: "",
       ttArr: [],
@@ -16,18 +18,25 @@ class BookingPage extends React.Component {
     this.loadMore = this.loadMore.bind(this);
   }
 
+  //Loadmore
   loadMore() {
     this.setState((prev) => {
       return {visible: prev.visible + 25};
     });
   }
 
+  //GetUser
+ 
+
+//ComDiMounts
   async componentDidMount() {
     let httpht = window.location.href;
     let idS = httpht.slice(30, 32);
     let res = await axios.get("/api/user/getUserDoctor/" + idS);
+    let adds = await axios.get("/api/examinationCard/addExaminationCard/");
     this.setState({
       bookingData: res,
+      addBooking: adds,
     });
     console.log("res:", res);
   }
@@ -35,6 +44,8 @@ class BookingPage extends React.Component {
     if (prevState.bookingData !== this.state.bookingData) {
     }
   }
+
+ 
 
   customtext = (data) => {
     let textArr = data.split("\r\n");
@@ -47,7 +58,6 @@ class BookingPage extends React.Component {
 
   render() {
     let { bookingData } = this.state;
-    // let { ttArr } = ;
     console.log("check state booking", this.state.bookingData);
     console.log("check state tt", this.state.ttArr);
     //  console.log(bookingData);
