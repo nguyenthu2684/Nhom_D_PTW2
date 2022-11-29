@@ -71,8 +71,12 @@ class MedicalFacility extends Component {
                 </div>
             </div>
         </div>
+        //
+        
     
         );
+       
+
     }
 
 }
