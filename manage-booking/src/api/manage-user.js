@@ -1,42 +1,52 @@
-import request from "../util/request";
-import axios from "axios";
+import api from "./get";
 
-const URL = "http://localhost:5000/api/user";
+const getListUserService = () => api.get(api.url.users).then((res) => res.data)
 
-//Đổ danh sách lên màn hình
-export const getAllAccountService = (payload) => {
-    return request(`${URL}/getAll`, {
-        method: "POST",
-        data: payload,
-    });
-};
+const getDetailUserService = (id) => api.get(`${api.url.users}/${id}`).then((res) => res.data)
 
-//Thêm user
-export const createAccountService = (payload) => {
-    return request(`${URL}/addUser`, {
-        method: "POST",
-        data: payload,
-    });
-};
+const createUserService = (data) => api.post(api.url.users, data).then((res) => res.data)
 
-//Sửa user
-export const upDateAccountService = (id, payload) => {
-    return request(`${URL}/update/${id}`, {
-        method: "POST",
-        data: payload,
-    });
-};
+const editUserService = (id, data) => api.put(`${api.url.users}/${id}`, data).then((res) => res.data)
 
-//Xóa user
-export const deleteAccountService = (id) => {
-    return request(`${URL}/delete/${id}`, {
-        method: "POST",
-    });
-};
+const deleteUserService = (id) => api.delete(`${api.url.users}/${id}`).then((res) => res.data)
 
-//Lấy thông tin 1 user
-export const getDetailAccount = (id) => {
-    return request(`${URL}/${id}`, {
-        method: "POST",
-    });
-};
+const userService = {
+    listUser: getListUserService,
+    detailUser: getDetailUserService,
+    addUser: createUserService,
+    editUser: editUserService,
+    deleteUser: deleteUserService
+}
+
+export default userService
+// import axios from "axios";
+// const URL = "https://62ff9a7d34344b6431fd456b.mockapi.io"
+
+// const getListPostService = () => axios.get(`${URL}/user`)
+
+// const createPostService = (data) => axios.post(`${URL}/user`, data)
+
+// const getDetailPostService = (id) => axios.get(`${URL}/user/${id}`)
+
+// const editPostService = (payload) => axios.put(`${URL}/user/${payload.id}`, payload)
+
+// const deletePostService = (id) => axios.delete(`${URL}/user/${id}`)
+// const URL = "http://localhost:5000/api/user"
+
+// const getListPostService = () => axios.get(`${URL}/getAll`)
+
+// const createPostService = (data) => axios.post(`${URL}/addUser`, data)
+
+
+// const getDetailPostService = (id) => axios.get(`${URL}/${id}`)
+
+// const editPostService = (payload) => axios.put(`${URL}/update/${payload.id}`, payload)
+
+// const deletePostService = (id) => axios.delete(`${URL}/delete/${id}`)
+// export {
+//     getListPostService,
+//     createPostService,
+//     getDetailPostService,
+//     editPostService,
+//     deletePostService
+// }

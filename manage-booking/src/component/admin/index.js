@@ -2,11 +2,11 @@ import React from 'react'
 import './admin.css'
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from "react-router-dom"
 import { useState } from 'react';
-import DoctorList from '../../pages/doctorList';
+
 import { HomeOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import BreadcrumbComponent from '../Breadcrumb';
-
+import UserManager from '../../pages/doctorList/index'
 const { Header, Content, Footer, Sider } = Layout;
 
 const AdminPage = () => {
@@ -73,7 +73,7 @@ const AdminPage = () => {
                         >
 
                             <Routes>
-                                <Route exact path="/admin/userManagement" element={<DoctorList />} />
+                                <Route exact path="/admin/userManagement" element={<UserManager />} />
                             </Routes>
 
                         </div>
