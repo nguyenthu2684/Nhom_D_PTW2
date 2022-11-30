@@ -1,19 +1,13 @@
-import axios from 'axios';
-import _ from 'lodash';
-
+import axios from "axios";
 const instance = axios.create({
-    baseURL: process.env.REACT_APP_BACKEND_URL,
-    withCredentials: true
+  baseURL: 'http://localhost:5000',
 });
 
-
-
-instance.interceptors.response.use(
-    (response) => {
-        const {data} = response;
-        return response.data;
+console.log(instance)
+instance.interceptors.response.use((res)=> {
+        return res.data;
     }
-);
+)
 
 
 export default instance;
