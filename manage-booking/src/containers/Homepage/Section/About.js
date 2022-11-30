@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
 
-
-
-
 class About extends Component {
 
     render() {
@@ -22,7 +19,6 @@ class About extends Component {
                       </div>
                       <div className='section-right'>
                         <p>Tải ứng dụng BookingCare cho điện thoại hoặc máy tính bảng: AndroidiPhone/iPadKhác</p>
-
                        </div>
                 </div>
             </div>

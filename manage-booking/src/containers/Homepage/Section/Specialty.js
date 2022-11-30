@@ -17,9 +17,7 @@ class Specialty extends Component {
             <div className='section-share section.specialty'>
                 <div className='section-content'>
                     <div className='section-header'>
-                        <span className='title-section'>
-             
-
+                        <span className='title-section'>            
                         </span>
                         <button className='btn-section'>Xem them</button>
                     </div>

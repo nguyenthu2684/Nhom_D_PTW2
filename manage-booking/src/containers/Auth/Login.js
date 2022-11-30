@@ -64,7 +64,7 @@ class Login extends Component {
                     })
                 }
             }
-            console.log('Khoa', e.response);
+            console.log('result', e.response);
 
         }
     }
@@ -101,22 +101,11 @@ class Login extends Component {
 
                         </div>
                         <div className='col-12'>
-                            <button className='btn-login' onClick={() => { this.handleLogin() }}>Login</button>
+                            <button className='btn-login' onClick={() => { this.handleLogin() }}>Submit</button>
+                            <button className='btn-sign' onClick={() => { this.handleLogin() }}>Sign in</button>
 
                         </div>
-                        <div className='col-12'>
-                            <span className='forgot-password'>Forgot for password</span>
-                        </div>
-                        <div className='col-12 text-center mt-3'>
-                            <span>Or login with:</span>
-                        </div>
-                        <div className='col-12 social-login'>
-                            <i className="fab fa-google-plus-g login-google"></i>
-                            <i className="fab fa-facebook-f login-facebook"></i>
-
-
-
-                        </div>
+                       
                     </div>
 
                 </div>
