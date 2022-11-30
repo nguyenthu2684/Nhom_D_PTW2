@@ -51,7 +51,7 @@ class Login extends Component {
                 return;
             }
 
-            if (data)  {
+            if (data) {
                 this.props.userLoginSuccess(data.user)
                 console.log('success login');
             }
@@ -91,7 +91,7 @@ class Login extends Component {
                             <div className='custon-input-password'>
                                 <input className='form-control' type={this.state.isShowPasswords ? 'text' : 'password'} placeholder='Enter your password' onChange={(event) => this.handleOnchangePassword(event)}></input>
                                 <span onClick={() => { this.handleShowHidePassword() }}>
-                                    <i className={this.state.isShowPasswords ? 'far fa-eye' : 'far fa-eye-slash'}></i>
+                                    <i class={this.state.isShowPasswords ? 'far fa-eye' : 'far fa-eye-slash'}></i>
                                 </span>
                             </div>
                         </div>
