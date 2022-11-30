@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import './HomeHeader.scss';
 import { FormattedMessage } from 'react-intl';
 import { LANGUAGE } from '../../utils';
-import DetailDoctor from '../Paitent/Doctor/DetailDoctor';
-
 import { changeLanguageApp } from '../../store/actions';
 import { NavLink } from 'react-router-dom';
 
