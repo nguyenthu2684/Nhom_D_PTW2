@@ -26,8 +26,8 @@ class OutStandingDoctor extends Component {
                             <div className='bg-image section-outstanding-doctor'/>
                         </div>
                         <div className='positon text-center'>
-                            <div>Giao su</div>
-                            <div>Xuong khop</div>
+                            <div>Giáo sư</div>
+                            <div>Xương khớp</div>
                         </div>
                   </div>
 
@@ -38,8 +38,8 @@ class OutStandingDoctor extends Component {
                             <div className='bg-image section-outstanding-doctor'/>
                         </div>
                         <div className='positon text-center'>
-                            <div>Giao su</div>
-                            <div>Xuong khop</div>
+                            <div>Bác sĩ</div>
+                            <div>Thần kinh</div>
                         </div>
                   </div>
 
@@ -50,8 +50,8 @@ class OutStandingDoctor extends Component {
                             <div className='bg-image section-outstanding-doctor'/>
                         </div>
                         <div className='positon text-center'>
-                            <div>Giao su</div>
-                            <div>Xuong khop</div>
+                            <div>Phó giáo sư</div>
+                            <div>Nha khoa</div>
                         </div>
                   </div>
 
@@ -62,8 +62,8 @@ class OutStandingDoctor extends Component {
                             <div className='bg-image section-outstanding-doctor'/>
                         </div>
                         <div className='positon text-center'>
-                            <div>Giao su</div>
-                            <div>Xuong khop</div>
+                            <div>Bác sĩ</div>
+                            <div>Da liễu</div>
                         </div>
                   </div>
 
@@ -74,8 +74,8 @@ class OutStandingDoctor extends Component {
                             <div className='bg-image section-outstanding-doctor'/>
                         </div>
                         <div className='positon text-center'>
-                            <div>Giao su</div>
-                            <div>Xuong khop</div>
+                            <div>Bác sĩ</div>
+                            <div>Tim mạch</div>
                         </div>
                   </div>
 
@@ -86,8 +86,8 @@ class OutStandingDoctor extends Component {
                             <div className='bg-image section-outstanding-doctor'/>
                         </div>
                         <div className='positon text-center'>
-                            <div>Giao su</div>
-                            <div>Xuong khop</div>
+                            <div>Bác sĩ</div>
+                            <div>Thần kinh</div>
                         </div>
                   </div>
 

@@ -88,37 +88,37 @@ class HomeHeader extends Component {
                     <div className='content-down'>
                         <div className='options'>
                             <div className='option-child'>
-                                <div className='icon-child'><i class="fas fa-hospital"></i></div>
+                                <div className='icon-child'><i className="fas fa-hospital"></i></div>
                                 <div className='text-child'>
                                     <div><FormattedMessage id="homeheader.Musculoskeletal"></FormattedMessage></div>
                                 </div>
                             </div>
                             <div className='option-child'>
-                                <div className='icon-child'><i class="fas fa-hospital"></i></div>
+                                <div className='icon-child'><i className="fas fa-hospital"></i></div>
                                 <div className='text-child'>
                                     <div><FormattedMessage id="homeheader.DepartmentofNeurology"></FormattedMessage></div>
                                 </div>
                             </div>
                             <div className='option-child'>
-                                <div className='icon-child'><i class="fas fa-hospital"></i></div>
+                                <div className='icon-child'><i className="fas fa-hospital"></i></div>
                                 <div className='text-child'>
                                     <div><FormattedMessage id="homeheader.Gastroenterology"></FormattedMessage></div>
                                 </div>
                             </div>
                             <div className='option-child'>
-                                <div className='icon-child'><i class="fas fa-hospital"></i></div>
+                                <div className='icon-child'><i className="fas fa-hospital"></i></div>
                                 <div className='text-child'>
                                     <div><FormattedMessage id="homeheader.cardiology"></FormattedMessage></div>
                                 </div>
                             </div>
                             <div className='option-child'>
-                                <div className='icon-child'><i class="fas fa-hospital"></i></div>
+                                <div className='icon-child'><i className="fas fa-hospital"></i></div>
                                 <div className='text-child'>
                                     <div><FormattedMessage id="homeheader.Otorhinolaryngology"></FormattedMessage></div>
                                 </div>
                             </div>
                             <div className='option-child'>
-                                <div className='icon-child'><i class="fas fa-hospital"></i></div>
+                                <div className='icon-child'><i className="fas fa-hospital"></i></div>
                                 <div className='text-child'>
                                     <div><FormattedMessage id="homeheader.spinedepartment"></FormattedMessage></div></div>
                             </div>

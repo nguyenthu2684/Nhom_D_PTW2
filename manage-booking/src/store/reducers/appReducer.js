@@ -32,7 +32,7 @@ const appReducer = (state = initialState, action) => {
                 }
             }
             case actionTypes.CHANGE_LANGUAGE: 
-            console.log("Khoa check reduce:",action);
+            console.log(" check reduce:",action);
 
             return {
                 ...state,

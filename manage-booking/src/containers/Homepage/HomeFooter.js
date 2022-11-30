@@ -8,30 +8,30 @@ class HomeFooter extends Component {
     render() {
 
         return (
-            <footer class="footer-section">
-            <div class="container">
+            <footer className="footer-section">
+            <div className="container">
           
-                <div class="row">
-                    <div class="col-md-4">
-                    <div class="footer-widget">
+                <div className="row">
+                    <div className="col-md-4">
+                    <div className="footer-widget">
                             
                             <div className='footer-logo size-logo'></div>
                     
-                            <div class="footer-title">
+                            <div className="footer-title">
                              <h3>Nhóm D</h3>
                             </div>
-                            <div class="footer-infor">
+                            <div className="footer-infor">
                                 
-                               <span> <a href="#"> <span className='iconFooter'><i class="fa-regular fa-location-dot"></i></span> 123 Linh Đông, Thủ Đức </a></span>
+                               <div>  <span className='iconFooter'> Địa chỉ :</span>123 Linh Đông, Thủ Đức </div>
                               
-                               <span> <a href="#"> <span className='iconFooter'></span>Số DT 012345678</a></span> 
+                               <div>  <span className='iconFooter'> Số DT : </span>012345678</div> 
                            
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                    <div class="footer-widget">
-                            <div class="footer-widget-heading">
+                    <div className="col-md-4">
+                    <div className="footer-widget">
+                            <div className="footer-widget-heading">
                                 <h3 className='inf'>Thông tin</h3>                         
                             <ul>
                                 <li><a href="#">Trang chủ</a></li>
@@ -42,9 +42,9 @@ class HomeFooter extends Component {
                         </div>
                         </div>
                     </div>
-                    <div class="col-md-4">.
-                    <div class="footer-widget">
-                            <div class="footer-widget-heading">
+                    <div className="col-md-4">.
+                    <div className="footer-widget">
+                            <div className="footer-widget-heading">
                                 <h3>Sức khỏe</h3>                                                                             
                                 <p className='information-text'>Sức khỏe là vàng</p>
                                 <h3>Dinh dưỡng</h3>                                             

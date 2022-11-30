@@ -42,7 +42,7 @@ class Login extends Component {
         try {
             const data = await handleLoginApi(this.state.username, this.state.password);
 
-            
+
             if (data.errCode === 1) {
                 this.setState({
                     errMessage: data.message
@@ -51,7 +51,7 @@ class Login extends Component {
                 return;
             }
 
-            if (data) {
+            if (data)  {
                 this.props.userLoginSuccess(data.user)
                 console.log('success login');
             }
@@ -91,7 +91,7 @@ class Login extends Component {
                             <div className='custon-input-password'>
                                 <input className='form-control' type={this.state.isShowPasswords ? 'text' : 'password'} placeholder='Enter your password' onChange={(event) => this.handleOnchangePassword(event)}></input>
                                 <span onClick={() => { this.handleShowHidePassword() }}>
-                                    <i class={this.state.isShowPasswords ? 'far fa-eye' : 'far fa-eye-slash'}></i>
+                                    <i className={this.state.isShowPasswords ? 'far fa-eye' : 'far fa-eye-slash'}></i>
                                 </span>
                             </div>
                         </div>
@@ -102,10 +102,10 @@ class Login extends Component {
                         </div>
                         <div className='col-12'>
                             <button className='btn-login' onClick={() => { this.handleLogin() }}>Submit</button>
-                            <button className='btn-sign' onClick={() => { this.handleLogin() }}>Sign in</button>
+                            <button className='btn-sign'>Sign in</button>
 
                         </div>
-                       
+
                     </div>
 
                 </div>

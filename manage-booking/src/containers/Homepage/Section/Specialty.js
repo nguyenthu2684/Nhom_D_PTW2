@@ -19,37 +19,72 @@ class Specialty extends Component {
                     <div className='section-header'>
                         <span className='title-section'>            
                         </span>
-                        <button className='btn-section'>Xem them</button>
+                        <button className='btn-section'>Xem thêm</button>
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
                       <div className='section-customize'>
                             <div className='bg-image section-specialty '/>
-                            <div>Co suong khop 1</div>
+                            <h5>Kit test nước bọt</h5>
+                            <ul>
+                                <li>Kit test nhanh bằng nước bọt</li>
+                                <li>Đơn giản, tiện lợi, chính xác</li>
+                                <li>Được bộ y tế công nhận</li>
+                            </ul>
                       </div>
                       <div className='section-customize'>
                             <div className='bg-image section-specialty '/>
-                             <div>Co suong khop 1</div>
+                            <h5>Kit test nước bọt</h5>
+                            <ul>
+                                <li>Kit test nhanh bằng nước bọt</li>
+                                <li>Đơn giản, tiện lợi, chính xác</li>
+                                <li>Được bộ y tế công nhận</li>
+                            </ul>
                       </div>
                       <div className='section-customize'>
                             <div className='bg-image section-specialty '/>
-                             <div>Co suong khop 1</div>
+                            <h5>Kit test nước bọt</h5>
+                            <ul>
+                                <li>Kit test nhanh bằng nước bọt</li>
+                                <li>Đơn giản, tiện lợi, chính xác</li>
+                                <li>Được bộ y tế công nhận</li>
+                            </ul>
                       </div>
                       <div className='section-customize'>
                             <div className='bg-image section-specialty '/>
-                             <div>Co suong khop 1</div>
+                            <h5>Kit test nước bọt</h5>
+                            <ul>
+                                <li>Kit test nhanh bằng nước bọt</li>
+                                <li>Đơn giản, tiện lợi, chính xác</li>
+                                <li>Được bộ y tế công nhận</li>
+                            </ul>
                       </div>
                       <div className='section-customize'>
                             <div className='bg-image section-specialty '/>
-                             <div>Co suong khop 1</div>
+                            <h5>Kit test nước bọt</h5>
+                            <ul>
+                                <li>Kit test nhanh bằng nước bọt</li>
+                                <li>Đơn giản, tiện lợi, chính xác</li>
+                                <li>Được bộ y tế công nhận</li>
+                            </ul>
                       </div>
                       <div className='section-customize'>
                             <div className='bg-image section-specialty '/>
-                             <div>Co suong khop 1</div>
+                            <h5>Kit test nước bọt</h5>
+                            <ul>
+                                <li>Kit test nhanh bằng nước bọt</li>
+                                <li>Đơn giản, tiện lợi, chính xác</li>
+                                <li>Được bộ y tế công nhận</li>
+                            </ul>
                       </div>
                       <div className='section-customize'>
                             <div className='bg-image section-specialty '/>
-                             <div>Co suong khop 1</div>
+                            <h5>Kit test nước bọt</h5>
+                            <ul>
+                                <li>Kit test nhanh bằng nước bọt</li>
+                                <li>Đơn giản, tiện lợi, chính xác</li>
+                                <li>Được bộ y tế công nhận</li>
+                            </ul>
                       </div>
                         </Slider>
 
