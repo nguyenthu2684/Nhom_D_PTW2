@@ -33,7 +33,7 @@ Log.loginFun = function (callback, data) {
         dbConnection.query('select userName, auth from login where `userName` = "' + data.userName + '" And `passWord` = "' + data.passWord + '";', function (error, results, fields) {
             if (error) throw error;
             if (results.length === 0) return callback(null);
-            return callback(results);
+            return callback(results[0]);
         });
     } else {
         return callback(null);

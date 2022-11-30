@@ -23,6 +23,7 @@ module.exports = {
         Login.loginFun((results) => {
            if (!results) {
             return res.json({
+                errCode: 1,
                 message: "Can't Login"
             });
            } 

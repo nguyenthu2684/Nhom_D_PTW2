@@ -29,11 +29,12 @@ class HomePage extends Component {
         return (
            <div>
             <HomeHeader/>
-            {/* <Specialty settings={settings}/> */}
+            {<Specialty settings={settings}/> }
             <MedicalFacility settings={settings}/>
-            {/* <OutStandingDoctor settings={settings}/> */}
-            {/* <HandBook settings={settings}/> */}
+            {<OutStandingDoctor settings={settings}/> }
+           
             <About/>
+            {<HandBook settings={settings}/> }
             <HomeFooter/>
            </div>
         );

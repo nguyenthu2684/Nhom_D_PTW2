@@ -8,11 +8,16 @@
     color: $common-text-color;
     height: 40px;
     position: relative;
+
+  
     .btn-logout {
+        padding: 20px 10px;
+        background-color: purple;
         color: $common-text-color;
-        line-height: 40px;
-        height: 40px;
-        padding: 0 10px;
+
+        display: flex;
+        align-items: center;
+        
         &:hover {
             background-color: darken($colormain, 5);
         }

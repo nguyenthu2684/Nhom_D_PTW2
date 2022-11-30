@@ -14,7 +14,7 @@ class UserManage extends Component {
 
     render() {
         return (
-            <div className="text-center">Manage users quang khoasda</div>
+            <div className="text-center">Welcome to admin</div>
         );
     }
 
