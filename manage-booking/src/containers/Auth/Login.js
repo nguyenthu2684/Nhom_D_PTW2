@@ -62,7 +62,7 @@ class Login extends Component {
                     })
                 }
             }
-            console.log('result', e.response);
+            // console.log('result', e.response);
  
         }
        

@@ -15,4 +15,16 @@ dbConnection.connect(function(err) {
     console.log("Database connected!");
 });
 
+dbConnection.load = function (sql)  {
+    return new Promise((resolve, reject) => {
+        dbConnection.query(sql, (err, results) => {
+            if (err) {
+                console.error(err)
+                return reject(err);
+            }
+            resolve(results);
+        });
+    });
+}
+
 module.exports = dbConnection;

@@ -20,4 +20,19 @@ Log.loginFun = function (callback, data) {
 }
 
 
+
+Log.findOne_email = async function (userName) {
+    const rows = await dbConnection.load(`SELECT *
+    FROM login
+    WHERE userName = '${userName}'`);
+
+    console.log({
+        rows
+    })
+    if (rows.length === 0) {
+        return null
+    }
+    return rows[0];
+}
+
 module.exports = Log;

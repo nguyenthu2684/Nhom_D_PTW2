@@ -4,10 +4,15 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import UserManage from '../containers/System/UserManage';
 import ProductManage from '../containers/System/ProductManage';
 import RegisterPackageGroupOrAcc from '../containers/System/RegisterPackageGroupOrAcc';
+import { path } from '../utils';
 
 class System extends Component {
     render() {
-        const { systemMenuPath } = this.props;
+        const { systemMenuPath, user } = this.props;
+
+        if (user?.userInfo?.auth !== 0) {
+            return <Redirect to={path.HOME} />
+        }
         return (
             <div className="system-container">
                 <div className="system-list">
@@ -25,7 +30,8 @@ class System extends Component {
 
 const mapStateToProps = state => {
     return {
-        systemMenuPath: state.app.systemMenuPath
+        systemMenuPath: state.app.systemMenuPath,
+        user: state.user,
     };
 };
 
