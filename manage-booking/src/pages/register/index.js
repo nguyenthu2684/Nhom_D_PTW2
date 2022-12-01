@@ -67,13 +67,6 @@ function Register() {
                                     layout='horizontal'
                                 >
 
-                                    {/* ID */}
-                                    <Form.Item
-                                        label="ID"
-                                        name="id"
-                                    >
-                                        <Input disabled={true} />
-                                    </Form.Item>
                                     {/* Tên */}
                                     <Form.Item
                                         label="User Name"
@@ -113,6 +106,20 @@ function Register() {
                                         ]}
                                     >
                                         <Input />
+                                    </Form.Item>
+
+                                    {/* Password */}
+                                    <Form.Item
+                                        label="Password"
+                                        name="password"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: "Please fill your email",
+                                            },
+                                        ]}
+                                    >
+                                        <Input.Password />
                                     </Form.Item>
 
                                     {/* Điện thoại */}
