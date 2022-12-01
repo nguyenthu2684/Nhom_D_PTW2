@@ -13,6 +13,7 @@ const Users = () => {
     const [isLoading, seIsLoading] = useState(false);
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
     const [isEdit, setIsEdit] = useState(true);
+    const { Option } = Select;
 
     useEffect(() => {
         loadListUser()
@@ -111,6 +112,11 @@ const Users = () => {
             title: 'Gender',
             dataIndex: 'gender',
             key: 'gender',
+        },
+        {
+            title: 'Role',
+            dataIndex: 'role',
+            key: 'role',
         },
         {
             title: 'Address',
@@ -295,6 +301,18 @@ const Users = () => {
                     </Radio.Group>
                 </Form.Item>
 
+                {/* Quyền */}
+                <Form.Item
+                    label="Role"
+                    name="role"
+
+                >
+                    <Select placeholder="Please choose">
+                        <Option value={1}>Loại 1</Option>
+                        <Option value={2}>Loại 2</Option>
+                        <Option value={3}>Loại 3</Option>
+                    </Select>
+                </Form.Item>
                 {/* Địa chỉ */}
                 <Form.Item
                     label="Address"
