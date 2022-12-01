@@ -24,7 +24,20 @@ module.exports = {
         }, userId)
     },
 
+    getUserItrById: (req, res) => {
+        const userId = req.params.id;
+        User.getUserItrById(function(err, user) {
+            if (err) {
+                console.log('Controller - Get user by id: ', err);
+                res.send(err);
+            }
+            console.log('Res: ', user);
+            res.send(user);
+        }, userId)
+    },
+
     addUser: (req, res) => {
+        console.log(111)
         data = req.body;
         console.log(JSON.stringify(data));
         User.addUser(function(err, user) {
