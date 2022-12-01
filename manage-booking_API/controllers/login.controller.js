@@ -30,7 +30,7 @@ module.exports = {
 
            return res.json({
             message: "Logged In",
-            data: results,
+            user: results,
            });
         }, data)
     }

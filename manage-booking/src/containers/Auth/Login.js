@@ -40,9 +40,8 @@ class Login extends Component {
         })
     
         try {
-            const data = await handleLoginApi(this.state.username, this.state.password);
+            const {data} = await handleLoginApi(this.state.username, this.state.password);
             
-
             if (data.errCode === 1) {
                 this.setState({
                     errMessage: data.message
@@ -53,7 +52,6 @@ class Login extends Component {
 
             if (data) {
                 this.props.userLoginSuccess(data.user)
-                console.log('success login');
             }
 
         } catch (e) {
@@ -127,7 +125,7 @@ const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
 
-        //userLoginFail: () => dispatch(actions.adminLoginFail()),
+        // userLoginFail: () => dispatch(actions.adminLoginFail()),
         userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo))
     };
 };

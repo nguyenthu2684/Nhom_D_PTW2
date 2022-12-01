@@ -68,7 +68,7 @@ const medicalTestsRoutes =require('./routes/medical_tests.route');
 app.use('/api/medicalTests', medicalTestsRoutes);
 
 //Log (Login thêm pass)
-const logRoutes =require('./routes/login.route');
+const logRoutes = require('./routes/login.route');
 app.use('/api/log', logRoutes);
 
 //post
