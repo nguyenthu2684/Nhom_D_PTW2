@@ -24,7 +24,7 @@ function Register() {
     const [form] = Form.useForm()
 
     const onSubmit = (values) => {
-        const params = { ...values, gender: true, image: "https://znews-photo.zingcdn.me/w210/Uploaded/bzivolby/2022_03_27/phang.jpg" }
+        const params = { ...values, role: 2, image: "https://znews-photo.zingcdn.me/w210/Uploaded/bzivolby/2022_03_27/phang.jpg" }
         userService.addUser(params).then(res => {
             if (res) {
                 notification.open({
