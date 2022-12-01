@@ -1,128 +1,185 @@
 import React from 'react'
-import { UploadOutlined } from '@ant-design/icons';
+import { CheckOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import './register.css'
+import userService from '../../api/register';
 import {
-
     Form,
     Input,
     Button,
     Radio,
     Row,
     Col,
-    Select,
-    Cascader,
     DatePicker,
     InputNumber,
     TreeSelect,
     Switch,
     Checkbox,
     Upload,
+    notification,
 } from 'antd';
-const { RangePicker } = DatePicker;
-const { TextArea } = Input;
+
 function Register() {
-    const [listImage, setListImage] = useState([])
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
-    const [componentDisabled, setComponentDisabled] = useState(true);
-    const onFormLayoutChange = ({ disabled }) => {
-        setComponentDisabled(disabled);
-    };
-    const uploadImage = (event) => {
-        setListImage([...listImage, event.target.files[0]])
-    }
-    const deleteImage = (i) => {
-        setListImage([
-            ...listImage.slice(0, i),
-            ...listImage.slice(i + 1)
-        ])
+    const [form] = Form.useForm()
+
+    const onSubmit = (values) => {
+        const params = { ...values, gender: true, image: "https://znews-photo.zingcdn.me/w210/Uploaded/bzivolby/2022_03_27/phang.jpg" }
+        userService.addUser(params).then(res => {
+            if (res) {
+                notification.open({
+                    icon: <CheckOutlined style={{ color: "green" }} />,
+                    message: 'REGISTER',
+                    description: 'register success'
+                });
+
+            }
+        })
+        form.resetFields()
     }
     return (
         <>
+            <div className='container'>
+                <Row>
+                    <Col span={14}>
+                        <div className='left'>
+                            <img src='arrow-down-2828.png' />
+                            <h1 style={{ color: 'white', fontSize: 40 }}>Join Us</h1>
+                            <p style={{ fontSize: 17 }}>Welcome to our hospital <br />
+                                Thank you for your interest in our services</p>
+                            <Button className='btn-SM'>About Us</Button>
+                        </div>
+                    </Col>
+                    <Col span={8}>
+                        <div className='right'>
+                            <h1>Register</h1>
+                            <div className='register-Form'>
+                                <Form
+                                    form={form}
+                                    name="form"
+                                    labelCol={{ span: 5 }}
+                                    wrapperCol={{ span: 19 }}
+                                    initialValues={{
+                                        remember: true,
+                                    }}
+                                    onFinish={onSubmit}
+                                    autoComplete="off"
+                                    layout='horizontal'
+                                >
 
-            <h1 style={{ textAlign: 'center', color: 'orangered', marginTop: "4%" }}>Register</h1>
-            <Form style={{ marginTop: "2%" }}
-                labelCol={{
-                    span: 6,
-                }}
-                wrapperCol={{
-                    span: 14,
-                }}
-                layout="horizontal"
-                onValuesChange={onFormLayoutChange}
+                                    {/* ID */}
+                                    <Form.Item
+                                        label="ID"
+                                        name="id"
+                                    >
+                                        <Input disabled={true} />
+                                    </Form.Item>
+                                    {/* Tên */}
+                                    <Form.Item
+                                        label="User Name"
+                                        name="userName"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: "Please fill your User name",
+                                            },
+                                        ]}
+                                    >
+                                        <Input />
+                                    </Form.Item>
 
-            >
-                {/* user name */}
-                <Form.Item label="User name:">
-                    <Input />
-                </Form.Item>
+                                    <Form.Item
+                                        label="Full Name"
+                                        name="fullName"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: "Please fill full name",
+                                            },
+                                        ]}
+                                    >
+                                        <Input />
+                                    </Form.Item>
 
-                {/* full name */}
-                <Form.Item label="Fullname:">
-                    <Input />
-                </Form.Item>
+                                    {/* Email */}
+                                    <Form.Item
+                                        label="Email"
+                                        name="email"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: "Please fill your email",
+                                            },
+                                        ]}
+                                    >
+                                        <Input />
+                                    </Form.Item>
 
-                {/* email */}
-                <Form.Item label="Email:">
-                    <Input />
-                </Form.Item>
+                                    {/* Điện thoại */}
+                                    <Form.Item
+                                        label="Phone"
+                                        name="phone"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: "Please fill your phone",
+                                            },
+                                        ]}
+                                    >
+                                        <Input />
+                                    </Form.Item>
 
-                {/* Password */}
-                <Form.Item label="Password:">
-                    <Input.Password />
-                </Form.Item>
 
-                {/* Phone */}
-                <Form.Item label="Phone:">
-                    <Input />
-                </Form.Item>
+                                    {/* Chọn ngày sinh */}
+                                    <Form.Item
+                                        label="BirthDay"
+                                        name="birthday"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: "Please choose your day of birth",
+                                            },
+                                        ]}
+                                    >
 
-                {/* birthday */}
-                <Form.Item label="Birthday:">
-                    <DatePicker
-                        format={dateFormatList}
-                        style={{ width: '100%' }} />
-                </Form.Item>
+                                        <DatePicker
+                                            format={dateFormatList}
+                                            style={{ width: '100%' }} />
 
-                {/* Gender */}
-                <Form.Item label="Gender:">
-                    <Radio.Group name="radiogroup" defaultValue={1}>
-                        <Radio value={1}>Male</Radio>
-                        <Radio value={2}>Female</Radio>
-                    </Radio.Group>
-                </Form.Item>
 
-                {/* address */}
-                <Form.Item label="Address:">
-                    <Input />
-                </Form.Item>
+                                    </Form.Item>
+                                    {/* Chọn giới tính */}
+                                    <Form.Item
+                                        label="Gender"
+                                        name="gender"
+                                    >
+                                        <Radio.Group name="radiogroup" initialValues={1}>
+                                            <Radio value={1}>Male</Radio>
+                                            <Radio value={2}>Female</Radio>
+                                        </Radio.Group>
+                                    </Form.Item>
 
-                {/* Upload hình ảnh */}
-                <Form.Item
-                    label="Upload"
-                    name="upload">
-                    <div className="upload-btn-wrapper">
-                        <button className="btn"><UploadOutlined /></button>
-                        <input type="file" name="myfile" onChange={uploadImage} />
-                    </div>
-                    <br />
-                    <Row gutter={24}>
-                        {
-                            listImage && listImage.map((item, index) =>
-                                <Col xs={24} md={12} key={index}>
-                                    <div className="container">
-                                        <img src={URL.createObjectURL(item)} alt="Avatar" className="image" />
-                                        <div className="middle">
-                                            <div className="text" onClick={() => deleteImage(index)}>Xoa</div>
-                                        </div>
-                                    </div>
-                                </Col>
-                            )
-                        }
-                    </Row>
-                </Form.Item>
-                <Button className='submit'>Submit</Button>
-            </Form>
+                                    {/* Địa chỉ */}
+                                    <Form.Item
+                                        label="Address"
+                                        name="address"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: "Please fill your address",
+                                            },
+                                        ]}
+                                    >
+                                        <Input />
+                                    </Form.Item>
+                                    <Button className='submit' htmlType='submit' form='form'>Submit</Button>
+
+                                </Form>
+                            </div>
+                        </div></Col>
+                </Row>
+
+            </div>
 
         </>
     )
