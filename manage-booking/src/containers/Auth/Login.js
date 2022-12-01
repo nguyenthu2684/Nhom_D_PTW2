@@ -4,7 +4,7 @@ import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import { KeyCodeUtils, LanguageUtils } from "../../utils";
 import './Login.scss';
-import { FormattedMessage } from 'react-intl';
+
 import { handleLoginApi } from '../../services/userService';
 
 
@@ -38,10 +38,10 @@ class Login extends Component {
         this.setState({
             errMessage: ''
         })
-
+    
         try {
             const data = await handleLoginApi(this.state.username, this.state.password);
-
+            
 
             if (data.errCode === 1) {
                 this.setState({
@@ -65,9 +65,11 @@ class Login extends Component {
                 }
             }
             console.log('result', e.response);
-
+ 
         }
+       
     }
+ 
     handleShowHidePassword = () => {
         this.setState({
             isShowPasswords: !this.state.isShowPasswords
