@@ -26,6 +26,7 @@ import CustomScrollbars from '../components/CustomScrollbars';
 import SendMail from './Auth/SendMail';
 import ChangePassWord from './Auth/ChangePassWord';
 import CosoYTe from './CoSoYTe/Csyt';
+import PageNotFound from './Auth/PageNotFound';
 
 
 class App extends Component {
@@ -67,7 +68,7 @@ class App extends Component {
                                     <Route path='/sendMail' component={SendMail} />
                                     <Route path='/changePass' component={ChangePassWord} />
                                     <Route path='/csyt' component={CosoYTe} />
-                                    
+                                    <Route path='/*' component={PageNotFound} />
                                 </Switch>
                             </CustomScrollbars>
                         </div>
