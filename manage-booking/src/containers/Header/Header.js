@@ -12,6 +12,7 @@ class Header extends Component {
         const { processLogout } = this.props;
 
         return (
+            <>
             <div className="header-container">
                 {/* thanh navigator */}
                 <div className="header-tabs-container">
@@ -22,7 +23,11 @@ class Header extends Component {
                 <div className="btn-logout" onClick={processLogout}>
                     <i className="fas fa-sign-out-alt"></i>
                 </div>
+              
             </div>
+             
+              
+            </>
         );
     }
 

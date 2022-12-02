@@ -6,6 +6,7 @@ import { KeyCodeUtils, LanguageUtils } from "../../utils";
 import './Login.scss';
 
 import { handleLoginApi } from '../../services/userService';
+import { Link } from 'react-router-dom';
 
 
 
@@ -38,10 +39,10 @@ class Login extends Component {
         this.setState({
             errMessage: ''
         })
-    
+
         try {
-            const {data} = await handleLoginApi(this.state.username, this.state.password);
-            
+            const { data } = await handleLoginApi(this.state.username, this.state.password);
+
             if (data.errCode === 1) {
                 this.setState({
                     errMessage: data.message
@@ -63,11 +64,12 @@ class Login extends Component {
                 }
             }
             // console.log('result', e.response);
- 
+
         }
-       
+
+
     }
- 
+
     handleShowHidePassword = () => {
         this.setState({
             isShowPasswords: !this.state.isShowPasswords
@@ -100,6 +102,14 @@ class Login extends Component {
                             {this.state.errMessage}
 
                         </div>
+                        <div className='col-12'>
+                            {/* <a className='ahihi'href='http://localhost:3000/sendMail'>Quên mật khẩu ?</a> */}
+                            {/* <a href='' className='fogot-password'>Quên mật khẩu ?</a> */}
+                            <Link to="/sendMail" className="">
+                                Forgot Password?
+                            </Link>
+                        </div>
+
                         <div className='col-12'>
                             <button className='btn-login' onClick={() => { this.handleLogin() }}>Submit</button>
                             <button className='btn-sign'>Sign in</button>

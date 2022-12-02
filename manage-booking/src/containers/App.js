@@ -23,6 +23,8 @@ import { CustomToastCloseButton } from '../components/CustomToast';
 import Homepage from './Homepage/HomePage.js';
 
 import CustomScrollbars from '../components/CustomScrollbars';
+import SendMail from './Auth/SendMail';
+import ChangePassWord from './Auth/ChangePassWord';
 
 
 class App extends Component {
@@ -61,7 +63,8 @@ class App extends Component {
                                     <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
                                     <Route path={path.HOMEPAGE} component={Homepage} />
                                     <Route path='/detailDoctor' component={DetailDoctor} />
-
+                                    <Route path='/sendMail' component={SendMail} />
+                                    <Route path='/changePass' component={ChangePassWord} />
                                 </Switch>
                             </CustomScrollbars>
                         </div>
