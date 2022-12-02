@@ -47,7 +47,7 @@ class CosoYTe extends Component {
 
             },
             {
-                name: "Bệnh viện Nam học và Hiếm muộn Hà Nội",
+                name: "Bệnh viện nam học và hiếm muộn Hà Nội",
                 address: "Hà Nội",
 
             },
@@ -57,12 +57,12 @@ class CosoYTe extends Component {
 
             },
             {
-                name: "Phòng Khám Ngọc Yến",
+                name: "Phòng khám Ngọc Yến",
                 address: "Quảng Ngãi",
 
             },
             {
-                name: "Phòng Khám răng",
+                name: "Phòng khám răng Mỹ Loan",
                 address: "Nha Trang",
 
             }
@@ -103,6 +103,7 @@ class CosoYTe extends Component {
                             <div key={item.name}>
                                 <div className='text-find'>
                                     {item.name} - {item.address}
+                                    
                                 </div>
                             </div>
                         ))}

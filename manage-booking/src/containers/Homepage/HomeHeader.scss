@@ -8,10 +8,14 @@
     z-index: 1000;
 
     .home-header-content {
+
         width: 100%;
         height: 100%;
         display: flex;
-
+.csyt{
+    text-decoration: none;
+    color: #010100;
+}
         .left-content {
             display: flex;
             align-items: center;
@@ -48,6 +52,11 @@
                     font-weight: 400;
                     font-size: 14px;
                 }
+            }
+            .child-content :hover{
+                
+                    color: #45c3d2;
+               
             }
         }
 

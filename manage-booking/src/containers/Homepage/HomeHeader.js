@@ -45,7 +45,7 @@ class HomeHeader extends Component {
                             </div>
                             <div className='child-content'>
                                 <div><b>
-                                    <Link to="/csyt"><FormattedMessage id="homeheader.HealthFacilities"></FormattedMessage></Link>
+                                    <Link className='csyt' to="/csyt"><FormattedMessage id="homeheader.HealthFacilities"></FormattedMessage></Link>
                                 </b></div>
                                 <div className='subs-title'>
                                     <div><b><FormattedMessage id="homeheader.chosseClinic"></FormattedMessage></b></div>
