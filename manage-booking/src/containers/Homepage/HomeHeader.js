@@ -35,7 +35,7 @@ class HomeHeader extends Component {
                         <div className='child-content'>
                              <NavLink to='/detailDoctor'><b><FormattedMessage id="homeheader.speciality"></FormattedMessage></b></NavLink>
                              <div className='subs-title'>
-                             <div><b><FormattedMessage id="homeheader.findspecialityDoctor"></FormattedMessage></b></div>
+                             <NavLink to='/managerDoctor'><b><FormattedMessage id="homeheader.findspecialityDoctor"></FormattedMessage></b></NavLink>
 
                              </div>
                         </div>
@@ -50,7 +50,7 @@ class HomeHeader extends Component {
 
                         </div>
                          <div className='child-content'>
-                             <div><b><FormattedMessage id="homeheader.doctor"></FormattedMessage></b></div>
+                             <NavLink to = '/infoDoctor'><b><FormattedMessage id="homeheader.doctor"></FormattedMessage></b></NavLink>
                               <div><b></b></div>
                               <div className='subs-title'>
                              <div><b><FormattedMessage id="homeheader.goodDoctor"></FormattedMessage></b></div>
