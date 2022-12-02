@@ -83,37 +83,28 @@ class CosoYTe extends Component {
         });
         return (
             <div className='container'>
-
-
                 <div className='find'>
                     <div className='header-csyt'>
                         <Link className="btn-logout" to="/home">
                             <i className="fas fa-sign-out-alt" ></i>
-                           
+
                         </Link>
                         <h2> Bệnh viện, phòng khám</h2>
+                        
 
                     </div>
-
-
-
                     <div>
                         <input className='input-find' value={filter} onChange={this.handleChange} />
                         {filteredData.map(item => (
                             <div key={item.name}>
                                 <div className='text-find'>
                                     {item.name} - {item.address}
-                                    
                                 </div>
                             </div>
                         ))}
                     </div>
-
-
                 </div>
-
             </div>
-
         )
     }
 }
