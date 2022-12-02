@@ -5,7 +5,7 @@ import { ConnectedRouter as Router } from 'connected-react-router';
 import { history } from '../redux'
 import { ToastContainer } from 'react-toastify';
 import DetailDoctor from './Paitent/Doctor/DetailDoctor';
-
+import Csyt from './CoSoYTe/Csyt';
 
 
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
@@ -25,6 +25,7 @@ import Homepage from './Homepage/HomePage.js';
 import CustomScrollbars from '../components/CustomScrollbars';
 import SendMail from './Auth/SendMail';
 import ChangePassWord from './Auth/ChangePassWord';
+import CosoYTe from './CoSoYTe/Csyt';
 
 
 class App extends Component {
@@ -65,6 +66,8 @@ class App extends Component {
                                     <Route path='/detailDoctor' component={DetailDoctor} />
                                     <Route path='/sendMail' component={SendMail} />
                                     <Route path='/changePass' component={ChangePassWord} />
+                                    <Route path='/csyt' component={CosoYTe} />
+                                    
                                 </Switch>
                             </CustomScrollbars>
                         </div>

@@ -4,8 +4,16 @@ import './HomeHeader.scss';
 import { FormattedMessage } from 'react-intl';
 import { LANGUAGE } from '../../utils';
 import { changeLanguageApp } from '../../store/actions';
-import { NavLink } from 'react-router-dom';
-
+import { Link, NavLink } from 'react-router-dom';
+const people = [
+    "Siri",
+    "Alexa",
+    "Google",
+    "Facebook",
+    "Twitter",
+    "Linkedin",
+    "Sinkedin"
+];
 
 class HomeHeader extends Component {
 
@@ -37,7 +45,7 @@ class HomeHeader extends Component {
                             </div>
                             <div className='child-content'>
                                 <div><b>
-                                    <div><FormattedMessage id="homeheader.HealthFacilities"></FormattedMessage></div>
+                                    <Link to="/csyt"><FormattedMessage id="homeheader.HealthFacilities"></FormattedMessage></Link>
                                 </b></div>
                                 <div className='subs-title'>
                                     <div><b><FormattedMessage id="homeheader.chosseClinic"></FormattedMessage></b></div>
@@ -62,10 +70,10 @@ class HomeHeader extends Component {
 
                         <div className='right-content'>
                             <div className='support'>
-                            <i className='fas fa-solid fa-user' >
-                            {/* <a href='' className='login'> <b> <FormattedMessage id="homeheader.Login"></FormattedMessage></b></a> */}
-                            <NavLink className='login' to='/login'><b><FormattedMessage id="homeheader.Login"></FormattedMessage></b></NavLink>
-                            </i>                             
+                                <i className='fas fa-solid fa-user' >
+                                    {/* <a href='' className='login'> <b> <FormattedMessage id="homeheader.Login"></FormattedMessage></b></a> */}
+                                    <NavLink className='login' to='/login'><b><FormattedMessage id="homeheader.Login"></FormattedMessage></b></NavLink>
+                                </i>
                                 {/* <div className={language === LANGUAGE.VI ? 'language-vi active' : 'language-vi'}><span onClick={() => this.changeLanguage(LANGUAGE.VI)}>VN</span></div>
                                 <div className={language === LANGUAGE.EN ? 'language-en active' : 'language-en'}><span onClick={() => this.changeLanguage(LANGUAGE.EN)}>EN</span></div> */}
 
@@ -82,7 +90,12 @@ class HomeHeader extends Component {
                             <div><b><FormattedMessage id="homeheader.allCare"></FormattedMessage></b></div>
                         </div>
                         <div className='search'><i className='fas fa-search'></i><input  type='text' placeholder='Tìm phòng khám bệnh' /></div>
-                      
+{/*                       
+                        <ul>
+                            {searchResults.map(item => (
+                                <li>{item}</li>
+                            ))}
+                        </ul> */}
                     </div>
                     <div className='content-down'>
                         <div className='options'>
