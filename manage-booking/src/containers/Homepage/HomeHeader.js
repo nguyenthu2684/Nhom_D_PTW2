@@ -53,7 +53,10 @@ class HomeHeader extends Component {
                                 </div>
                             </div>
                             <div className='child-content'>
-                                <div><b><FormattedMessage id="homeheader.doctor"></FormattedMessage></b></div>
+                                {/* <div><b><FormattedMessage id="homeheader.doctor"></FormattedMessage></b></div> */}
+                                <div><b>
+                                    <Link className='bacsi' to="/bs"><FormattedMessage id="homeheader.doctor"></FormattedMessage></Link>
+                                </b></div>
                                 <div><b></b></div>
                                 <div className='subs-title'>
                                     <div><b><FormattedMessage id="homeheader.goodDoctor"></FormattedMessage></b></div>

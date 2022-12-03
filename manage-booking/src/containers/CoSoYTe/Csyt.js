@@ -66,7 +66,8 @@ class CosoYTe extends Component {
                 address: "Nha Trang",
 
             }
-        ]
+        ],
+        
     };
 
     handleChange = event => {
@@ -90,7 +91,6 @@ class CosoYTe extends Component {
 
                         </Link>
                         <h2> Bệnh viện, phòng khám</h2>
-                        
 
                     </div>
                     <div>
@@ -103,8 +103,11 @@ class CosoYTe extends Component {
                             </div>
                         ))}
                     </div>
+
                 </div>
+
             </div>
+
         )
     }
 }

@@ -27,6 +27,7 @@ import SendMail from './Auth/SendMail';
 import ChangePassWord from './Auth/ChangePassWord';
 import CosoYTe from './CoSoYTe/Csyt';
 import PageNotFound from './Auth/PageNotFound';
+import BacSi from './BacSi/BacSi';
 
 
 class App extends Component {
@@ -68,6 +69,7 @@ class App extends Component {
                                     <Route path='/sendMail' component={SendMail} />
                                     <Route path='/changePass' component={ChangePassWord} />
                                     <Route path='/csyt' component={CosoYTe} />
+                                    <Route path='/bs' component={BacSi} />
                                     <Route path='/*' component={PageNotFound} />
                                 </Switch>
                             </CustomScrollbars>

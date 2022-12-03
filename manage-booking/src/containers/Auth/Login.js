@@ -109,7 +109,9 @@ class Login extends Component {
                                 Forgot Password?
                             </Link>
                         </div>
-
+                        <label>
+                            <input name="rememberMe"  type="checkbox" /> Remember me
+                        </label>
                         <div className='col-12'>
                             <button className='btn-login' onClick={() => { this.handleLogin() }}>Submit</button>
                             <button className='btn-sign'>Sign in</button>
