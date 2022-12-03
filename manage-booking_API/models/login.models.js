@@ -35,4 +35,21 @@ Log.findOne_email = async function (userName) {
     return rows[0];
 }
 
+
+
+Log.updatePasswordByUserName = async function (userName, passWord) {
+    const rows = await dbConnection.update('login', {
+        passWord
+    }, {userName});
+
+    console.log({
+        rows
+    })
+    if (rows.length === 0) {
+        return null
+    }
+    return rows[0];
+}
+
+
 module.exports = Log;

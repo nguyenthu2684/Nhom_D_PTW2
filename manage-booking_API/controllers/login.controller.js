@@ -1,7 +1,10 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const Log = require('../models/login.models');
 
 const Login = require('../models/login.models');
+const { decrypt } = require('../utils/crypto');
+const { sendMail, notiPassWasChanged } = require('../utils/send-mail');
 
 module.exports = {
     loginFun: (req, res) => {
@@ -28,10 +31,7 @@ module.exports = {
 
             // find user by email
             const userByEmail = await Login.findOne_email(userName);
-          
-            console.log({
-                userByEmail
-            })
+
             // check is user existing in database.
             if (userByEmail === null) {
                 return res.status(401).json({ errorCode: 1, message: `Please register before login!` });
@@ -59,6 +59,61 @@ module.exports = {
             }
         } catch (err) {
             console.log(err)
+            return res.status(500).json({ success: false, message: "Error login" });
+        }
+
+    },
+
+    sendMail: async (req, res) => {
+        try {
+            const { userName } = req.body;
+
+            // find user by email
+            const userByEmail = await Login.findOne_email(userName);
+          
+        
+            // check is user existing in database.
+            if (userByEmail === null) {
+                return res.status(401).json({ errorCode: 1, message: `Email not found!` });
+            }
+
+            const sent = await sendMail(userName);
+
+            return res.status(200).json({
+                email: userName,
+                messeage: "Good"
+            })
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json({ success: false, message: "Error login" });
+        }
+
+    },
+
+    resetPassword: async (req, res) => {
+        try {
+            const { mailEnc, passWord } = req.body;
+
+            const email = decrypt(JSON.parse(mailEnc));
+            // find user by email
+            const userByEmail = await Login.findOne_email(email);
+        
+            // check is user existing in database.
+            if (userByEmail === null) {
+                return res.status(401).json({ errorCode: 1, message: `Email not found!` });
+            }
+
+            // update
+            await Log.updatePasswordByUserName(email, passWord);
+
+            await notiPassWasChanged(email);
+
+            return res.status(200).json({
+                email: email,
+                messeage: "Good"
+            })
+        } catch (err) {
+            console.log(err);
             return res.status(500).json({ success: false, message: "Error login" });
         }
 

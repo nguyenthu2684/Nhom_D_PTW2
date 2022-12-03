@@ -7,4 +7,15 @@ const handleLoginApi = (userName, passWord) => {
     return axios.post(BASE_URL + '/api/log/logFun', { userName, passWord });
 }
 
-export { handleLoginApi }
+const handleCheckEmail = (userName) => {
+    return axios.post(BASE_URL + '/api/log/send-mail', { userName });
+}
+
+const handleResetPassword = (mailEnc, passWord) => {
+    return axios.post(BASE_URL + '/api/log/reset-password', {
+        mailEnc, passWord
+    });
+
+}
+
+export { handleLoginApi, handleCheckEmail, handleResetPassword }

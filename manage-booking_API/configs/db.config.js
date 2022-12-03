@@ -27,4 +27,21 @@ dbConnection.load = function (sql)  {
     });
 }
 
+
+dbConnection.update = function (table, entity, condition) {
+    const sql = `UPDATE ${table}
+                 SET ?
+                 WHERE ?`;
+
+    return new Promise((resolve, reject) => {
+        dbConnection.query(sql, [entity, condition], (err, results, fields) => {
+            if (err) {
+                console.error(err)
+                return reject(err);
+            }
+            resolve(results);
+        });
+    })
+}
+
 module.exports = dbConnection;

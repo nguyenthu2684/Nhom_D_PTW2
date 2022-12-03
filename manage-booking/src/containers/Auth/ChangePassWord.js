@@ -5,8 +5,8 @@ import * as actions from "../../store/actions";
 import { KeyCodeUtils, LanguageUtils } from "../../utils";
 import './ChangePassWord.scss';
 
-import { handleLoginApi } from '../../services/userService';
-import { Link } from 'react-router-dom';
+import { handleLoginApi, handleResetPassword } from '../../services/userService';
+import { Link, Redirect } from 'react-router-dom';
 
 
 
@@ -14,6 +14,7 @@ class ChangePassWord extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            mailEnc: '',
             username: '',
             password: '',
             isShowPasswords: false,
@@ -21,7 +22,19 @@ class ChangePassWord extends Component {
         }
     }
 
-   
+
+    componentDidMount() {
+
+        const authResult = new URLSearchParams(window.location.search);
+        const mailEnc = authResult.get('m');
+
+        // spread data es6.
+        this.setState((prev) => ({
+            ...prev,
+            mailEnc,
+        }))
+    }
+
     handleOnchangePassword = (event) => {
         this.setState({
             //DCM lỗi
@@ -29,17 +42,24 @@ class ChangePassWord extends Component {
         })
 
     }
-   
-   
- 
+
+
     handleShowHidePassword = () => {
         this.setState({
             isShowPasswords: !this.state.isShowPasswords
         })
     }
 
-    render() {
+    handleResetPassword = async () => {
+        const res = await handleResetPassword(this.state.mailEnc, this.state.password);
+        if (res.status === 200) {
+            alert('change password success!')
+            return window.location.href = '/login';
+        }
+    }
 
+
+    render() {
 
         return (
             <div className='change-pass-background'>
@@ -51,7 +71,7 @@ class ChangePassWord extends Component {
                             <div className='custon-input-password'>
                                 <input className='form-control' type={this.state.isShowPasswords ? 'text' : 'password'} placeholder='Enter your password' onChange={(event) => this.handleOnchangePassword(event)}></input>
                                 <span onClick={() => { this.handleShowHidePassword() }}>
-                                    <i class={this.state.isShowPasswords ? 'far fa-eye' : 'far fa-eye-slash'}></i>
+                                    <i className={this.state.isShowPasswords ? 'far fa-eye' : 'far fa-eye-slash'}></i>
                                 </span>
                             </div>
                         </div>
@@ -60,7 +80,7 @@ class ChangePassWord extends Component {
                             <div className='custon-input-password'>
                                 <input className='form-control' type={this.state.isShowPasswords ? 'text' : 'password'} placeholder='Enter your password' onChange={(event) => this.handleOnchangePassword(event)}></input>
                                 <span onClick={() => { this.handleShowHidePassword() }}>
-                                    <i class={this.state.isShowPasswords ? 'far fa-eye' : 'far fa-eye-slash'}></i>
+                                    <i className={this.state.isShowPasswords ? 'far fa-eye' : 'far fa-eye-slash'}></i>
                                 </span>
                             </div>
                         </div>
@@ -69,11 +89,11 @@ class ChangePassWord extends Component {
                             {this.state.errMessage}
 
                         </div>
-                        
-                       
-                         <div className='col-12'>
-                         
-                            <button className='btn-change-pass'>Reset PassWord</button>
+
+
+                        <div className='col-12'>
+
+                            <button className='btn-change-pass' onClick={() => this.handleResetPassword()}>Reset PassWord</button>
 
                         </div>
 

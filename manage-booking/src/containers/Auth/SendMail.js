@@ -5,7 +5,7 @@ import * as actions from "../../store/actions";
 import { KeyCodeUtils, LanguageUtils } from "../../utils";
 import './SendMail.scss';
 
-import { handleLoginApi } from '../../services/userService';
+import { handleCheckEmail, handleLoginApi } from '../../services/userService';
 import { Link } from 'react-router-dom';
 
 
@@ -15,24 +15,28 @@ class SendMail extends Component {
         super(props);
         this.state = {
             email: '',
-          
-           
             errMessage: ''
         }
     }
 
-  
-    handleOnchangeEmail = (event) => {
-        this.setState({
-            email: event.target.value
-        })
 
+    handleOnchangeEmail = ({target}) => {
+        this.setState({
+            email: target.value
+        })
     }
 
+    handleClickResetPassword = async () => {
+        const { email } = this.state;
+        console.log(email);
+
+        const res = await handleCheckEmail(email);
+        console.log({
+            res,
+        })
+    }
 
     render() {
-
-
         return (
             <div className='fogotpass-background'>
                 <div className='fogotpass-container'>
@@ -42,17 +46,11 @@ class SendMail extends Component {
                             <lable>Email:</lable>
                             <input type='email' className='form-control' placeholder='Enter your email' value={this.state.email} onChange={(event) => this.handleOnchangeEmail(event)}></input>
                         </div>
-                                                                                   
-                         <div className='col-12'>
-                         
-                            <button className='btn-fogot-pass'>Send reset code</button>
-                           
+                        <div className='col-12'>
+                            <button className='btn-fogot-pass' onClick={() => this.handleClickResetPassword()}>Confirm reset password</button>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         )
     }
