@@ -1,8 +1,9 @@
 import React from 'react'
 import { CheckOutlined } from '@ant-design/icons';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './register.css'
 import userService from '../../api/register';
+import emailjs from '@emailjs/browser'
 import {
     Form,
     Input,
@@ -11,19 +12,17 @@ import {
     Row,
     Col,
     DatePicker,
-    InputNumber,
-    TreeSelect,
-    Switch,
-    Checkbox,
-    Upload,
     notification,
 } from 'antd';
 
 function Register() {
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
-    const [form] = Form.useForm()
+    const [form] = Form.useForm();
+    //  const form = useRef()
 
     const onSubmit = (values) => {
+        // e.preventDefault();
+
         const params = { ...values, role: 2, image: "https://znews-photo.zingcdn.me/w210/Uploaded/bzivolby/2022_03_27/phang.jpg" }
         userService.addUser(params).then(res => {
             if (res) {
@@ -35,8 +34,17 @@ function Register() {
 
             }
         })
-        form.resetFields()
+        form.resetFields();
+        emailjs.sendForm('service_zfbabbc', 'template_amzupr2', form.current, '_vOLKOCnG2wZRDbaQ')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+
     }
+
+
     return (
         <>
             <div className='container'>
@@ -55,6 +63,7 @@ function Register() {
                             <h1>Register</h1>
                             <div className='register-Form'>
                                 <Form
+                                    ref={form}
                                     form={form}
                                     name="form"
                                     labelCol={{ span: 5 }}
@@ -62,6 +71,7 @@ function Register() {
                                     initialValues={{
                                         remember: true,
                                     }}
+                                    // onSubmit = {sendEmail}
                                     onFinish={onSubmit}
                                     autoComplete="off"
                                     layout='horizontal'
@@ -193,3 +203,5 @@ function Register() {
 }
 
 export default Register
+
+
