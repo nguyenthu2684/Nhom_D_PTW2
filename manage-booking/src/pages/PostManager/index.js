@@ -16,7 +16,7 @@ const PostManager = (props) => {
     const [isLoading, seIsLoading] = useState(false);
     const { getAllPostDispatch, createPostDispatch, editPostDispatch, deletePostDispatch, getDetailPostDispatch } = props
     const { listPost, newPost } = props;
-    
+
 
     //Hiển thị danh sách
     useEffect(() => {
@@ -277,8 +277,6 @@ const PostManager = (props) => {
                         <Option value={1}>Loại 1</Option>
                         <Option value={2}>Loại 2</Option>
                         <Option value={3}>Loại 3</Option>
-                        <Option value={4}>Loại 4</Option>
-                        <Option value={5}>Loại 5</Option>
                     </Select>
                 </Form.Item>
 

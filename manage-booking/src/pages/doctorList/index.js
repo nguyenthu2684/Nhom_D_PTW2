@@ -161,7 +161,7 @@ const Users = () => {
             })
         } else {
             // tạo mới
-            const params = { ...values, password: '123', image: "https://petshopsaigon.vn/wp-content/uploads/2020/11/cach-phoi-giong-cho-husky-2.jpg" }
+            const params = { ...values, password: '123', image: "https://thucungsaigon.com/images/cho/ban-cho-husky-wooly.jpg" }
             userService.addUser(params).then(res => {
                 if (res) {
                     loadListUser()
