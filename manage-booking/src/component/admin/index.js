@@ -2,11 +2,13 @@ import React from 'react'
 import './admin.css'
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from "react-router-dom"
 import { useState } from 'react';
-
+import DetailPost from '../../pages/DetailPost';
 import { HomeOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import BreadcrumbComponent from '../Breadcrumb';
 import UserManager from '../../pages/doctorList/index'
+import PostManager from './../../pages/PostManager/index';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 const AdminPage = () => {
@@ -34,6 +36,7 @@ const AdminPage = () => {
                         mode="inline"
                     >
                         <Menu.Item key={1}><Link to="/admin/userManagement">User Manage</Link></Menu.Item>
+                        <Menu.Item key={2}><Link to="/admin/postManagement">Post Manage</Link></Menu.Item>
                     </Menu>
 
                 </Sider>
@@ -46,7 +49,7 @@ const AdminPage = () => {
 
                         }}>
                         <nav className="navbar-container">
-                            <Link to="/dashboard" className="navbar-icon"> <HomeOutlined /> </Link>
+                            <Link to="/home" className="navbar-icon"> <HomeOutlined /> </Link>
                             <Link to="/" className="navbar-icon"> <BellOutlined /> </Link>
                             <Link to="/" className="navbar-icon"> <UserOutlined /> </Link>
 
@@ -74,6 +77,8 @@ const AdminPage = () => {
 
                             <Routes>
                                 <Route exact path="/admin/userManagement" element={<UserManager />} />
+                                <Route exact path="/admin/postManagement" element={<PostManager />} />
+                                {/* <Route path="/posts/:id" element={<DetailPost/>}/> */}
                             </Routes>
 
                         </div>

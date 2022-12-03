@@ -1,0 +1,74 @@
+.type1{
+    display: flex;
+}
+
+.type1 h5{
+    margin: 2%;
+}
+
+.type1 img{
+    width: 150px;
+    height: auto;
+}
+
+.type2 img{
+    width: 100%;
+    height: 370px;
+
+}
+
+.type3 img{
+    width: 250px;
+    height: 115px;
+}
+
+.type3 h5{
+    font-size: 15px;
+    margin-right: 27%;
+}
+
+.book h1{
+    font-weight: 700;
+
+}
+.type4 img{
+    height: auto;
+    width: 100%;
+}
+.book h1 {
+    text-align: center !important;
+    font-size: 35px;
+}
+
+.type5 img{
+    width: 100%;
+}
+.type5 h5{
+    font-size: 16px;
+}
+
+.hinh{
+    margin: 0 auto;
+}
+.detail h5{
+    font-size: 20px;
+    text-align: center;
+    font-weight: 700;
+}
+.detail b{
+    display: flex;
+    justify-content: center;
+    margin: 5% 0;
+}
+.detail{
+margin: 0 17%;
+}
+
+p{
+    color: black;
+}
+
+.detail img{
+    width: 100%;
+    margin: 0 auto;
+} 

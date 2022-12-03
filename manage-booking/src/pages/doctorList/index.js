@@ -155,7 +155,6 @@ const Users = () => {
         if (isEdit) {
             // sua 
             userService.editUser(values.id, values).then(res => {
-                console.log(res)
                 if (res) {
                     loadListUser()
                 }
