@@ -7,7 +7,7 @@ const UpdateInformationDoctor = function(updateInformationDoctor) {
 }
 
 UpdateInformationDoctor.getAll = function(result) {
-    dbConnection.query("select * from update_information_doctor", function(err, res) {
+    dbConnection.query("CALL Get_information_doctor", function(err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
