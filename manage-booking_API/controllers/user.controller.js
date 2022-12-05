@@ -24,7 +24,20 @@ module.exports = {
         }, userId)
     },
 
+    getDoctorById: (req, res) => {
+        const userId = req.params.id;
+        User.getDoctorById(function(err, user) {
+            if (err) {
+                console.log('Controller - Get user by id: ', err);
+                res.send(err);
+            }
+            console.log('Res: ', user);
+            res.send(user);
+        }, userId)
+    },
+
     addUser: (req, res) => {
+        console.log(111)
         data = req.body;
         console.log(JSON.stringify(data));
         User.addUser(function(err, user) {
@@ -60,5 +73,15 @@ module.exports = {
             res.send(user);
         }, userId)
     },
-    
+    getUserDoctorByIdSpe: (req, res) => {
+        const idSpe = req.params.id;
+        User.getUserDoctorByIdSpe(function(err, user) {
+            if (err) {
+                console.log('Create doctor ', err);
+                res.send(err);
+            }
+            console.log('Res: ', user);
+            res.send(user);
+        },idSpe)
+    },
 }
