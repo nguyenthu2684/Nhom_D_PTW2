@@ -48,8 +48,9 @@ class LikeAndShare extends Component {
     render(){
         let { dataHref} = this.props;
         return (
-            <div class="fb-like" data-href="https://main--booking-doctor.netlify.app/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
-            // <>
+            <div></div>
+            // <div class="fb-like" data-href="https://main--booking-doctor.netlify.app/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
+            // // <>
             //     {/* <div className="fb-like"
             //       data-href={dataHref}
             //       data-width=""

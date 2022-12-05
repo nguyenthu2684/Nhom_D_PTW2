@@ -1,7 +1,7 @@
 {   
     "homeheader": {
-        "speciality": "Medical speciality",
-        "findspecialityDoctor":"FindspecialityDoctor",
+        "speciality": "Contact Doctor",
+        "findspecialityDoctor":"Test",
         "HealthFacilities":"HealthFacilities",
         "chosseClinic":"chosseClinic",
         "doctor":"Doctor",

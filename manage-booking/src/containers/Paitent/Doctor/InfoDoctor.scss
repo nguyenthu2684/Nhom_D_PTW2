@@ -1,0 +1,44 @@
+body {
+    background: #fff;
+}
+
+.doctor {
+    padding: 50px 10px;
+
+
+    .doctorImg {
+        background: url('../../../assets/specialty/bacsi.png');
+        width: 150px;
+        height: 135px;
+        background-size: cover;
+        background-position: center center;
+        border-radius: 50%;
+    }
+
+    .doctorText {
+        font-size: 27px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #333;
+        line-height: 1.2;
+    }
+
+    .likeandshare {
+        padding: 1px 227px;
+    }
+
+    .level {
+        padding: 15px 0;
+        font-size: 16px;
+        margin-bottom: -6px;
+        font-weight: bold;
+        color: #333;
+        line-height: 1.2;
+    }
+
+    .drug {
+        font-size: 15px;
+        margin-bottom: 8px;
+
+    }
+}

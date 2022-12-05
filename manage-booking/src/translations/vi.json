@@ -1,7 +1,7 @@
 {
     "homeheader": {
-        "speciality": "Chuyên khoa",
-        "findspecialityDoctor":"Tìm theo bác sĩ chuyên khoa",
+        "speciality": "Liên hệ cho Bác sĩ",
+        "findspecialityDoctor":"Xét nghiệm",
         "HealthFacilities":"Cơ sở y tế",
         "chosseClinic":"Chọn phòng khám",
         "doctor":"Bác sĩ",
@@ -49,12 +49,11 @@
     },
     "menu": {
         "system": {
-            "header": "Hệ thống",
+            "header": "Welcome Doctor",
             "system-administrator": {
-                "header": "Quản trị hệ thống",
-                "user-manage": "Quản lý người sử dụng",
-                "product-manage": "Quản lý gói",
-                "register-package-group-or-account": "Đăng ký gói dịch vụ cho nhóm/tài khoản"
+                "header": "Quản trị hệ thống"
+                
+               
             },
             "system-parameter": {
                 "header": "Tham số hệ thống"

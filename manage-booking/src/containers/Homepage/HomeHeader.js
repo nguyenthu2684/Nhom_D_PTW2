@@ -50,10 +50,10 @@ class HomeHeader extends Component {
 
                         </div>
                          <div className='child-content'>
-                             <NavLink to = '/infoDoctor'><b><FormattedMessage id="homeheader.doctor"></FormattedMessage></b></NavLink>
+                             <div><b><FormattedMessage id="homeheader.doctor"></FormattedMessage></b></div>
                               <div><b></b></div>
                               <div className='subs-title'>
-                             <div><b><FormattedMessage id="homeheader.goodDoctor"></FormattedMessage></b></div>
+                             <NavLink to = '/infoDoctor'><b><FormattedMessage id="homeheader.goodDoctor"></FormattedMessage></b></NavLink>
                                 
                               </div>
 
