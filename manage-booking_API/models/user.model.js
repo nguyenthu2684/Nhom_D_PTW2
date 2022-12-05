@@ -24,6 +24,18 @@ User.getAll = function(result) {
     });
 }
 
+User.getDoctorById = function(result, userId) {
+    dbConnection.query("SELECT * FROM users INNER JOIN update_information_doctor ON users.idUser = update_information_doctor.idUser where users.idUser = " + userId, function(err, res) {
+        if (err) {
+            console.log("Error: ", err);
+            result(null, err);
+        } else {
+            console.log("User: ", res);
+            result(null, res);
+        }
+    });   
+}
+
 User.getUserById = function(result, userId) {
     dbConnection.query("select * from users where idUser=" + userId, function(err, res) {
         if (err) {
@@ -36,17 +48,6 @@ User.getUserById = function(result, userId) {
     });   
 }
 
-User.getUserItrById = function(result, userId) {
-    dbConnection.query("SELECT * FROM users INNER JOIN update_information_doctor ON users.idUser = update_information_doctor.idUser where users.idUser = " + userId, function(err, res) {
-        if (err) {
-            console.log("Error: ", err);
-            result(null, err);
-        } else {
-            console.log("User: ", res);
-            result(null, res);
-        }
-    });   
-}
 
 User.addUser = function(result, data) {  
     dbConnection.query('insert into `users`(`userName`, `fullName`, `email`, `phone`, `birthday`, `gender`, `address`, `imageUser`, `role`) value("'+ data.userName +'","'+ data.fullName + '","'+ data.email +'","'+ data.phone +'","'+ data.birthday +'","'+ data.gender +'","' + data.address +'","'+ data.imageUser +'","3")', function(err, res) {

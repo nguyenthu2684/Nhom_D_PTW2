@@ -22,12 +22,15 @@ class BookingModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      idCard:'',
       fullName: "",
       birthDay: "",
       dateEx: "",
       doctor: "",
 
+
       userData: [],
+      docData: [],
 
 
     };
@@ -41,39 +44,70 @@ class BookingModal extends React.Component {
 
     this.setState({
       ...copyState
-    }, () => {console.log('sps: ', copyState)})
+    },)
     
+  }
+
+  truyenId(){
+    return({
+      idDoctor: this.props.nameBS,
+    })
   }
 
   //ComDiMounts
   async componentDidMount() {
-    // let res = await axios.post("/api/examinationCard/addExaminationCard");
-    let cre = await axios.get("/api/user/7");
+    let id = 7
+    let get = await axios.get("/api/user/"+ id);
+    let bok = await axios.get("/api/user/getDoctorById/"+ this.truyenId().idDoctor);
     this.setState({
-      userData: cre,
+      userData: get,
+      docData: bok,
+      // dortorData: creBS,
     });
-    console.log("res:", cre);
   }
   async componentDidUpdate(prevProps, prevState) {
-    if (prevState.dataDoctor !== this.state.dataDoctor) {
+    if (prevState.userData !== this.state.userData) {
     }
   }
 
   toggle = () => {
-    this.props.toggleModal();
+    this.props.toggleModalBooking();
   };
 
-  headelAddCard = () =>{
-
+  headelAddCard = (req, res) =>{
+    this.setState({
+      fullName: req,
+      dateEx: res,
+    })  
+    console.log('check data ', req, res);
+    this.createCard()  
   }
+
+  createCard = () =>
+  {
+    // let res= axios.get('/api/examinationCard/addExaminationCard/');
+    // if(data && data ===0){
+    //   return res;
+    // }
+    let data = this.state
+    console.log('check data', data);
+    fetch(axios.post('/api/examinationCard/addExaminationCard/'),{
+      body: JSON.stringify(data)
+    }).then((result) =>{result.json().then((ser)=>{console.warn("re", ser)})})
+    // return axios.post('/api/examinationCard/addExaminationCard/', {this.state.fullName,  this.state.dateEx});
+  }
+
+
   render() {
     let{userData} = this.state;
+    let{docData} = this.state;
+    // let{dortorData} = this.state.dortorData;
     console.log(userData);
     return (
       <>
           <div>
-            <Modal isOpen={true} toggle={() => { this.toggle(); }}
-              className={"modalUser modal-dialog-centered"}
+            <Modal isOpen={this.props.isOpenModalDK} toggle={() => { this.toggle(); }}
+              className={"modalBooking modal-dialog-centered"}
             >
               <ModalHeader
                 toggle={() => {
@@ -106,14 +140,17 @@ class BookingModal extends React.Component {
                   </Row>
                   <FormGroup>
                     <Label for="dateex">Ngày giờ khám bệnh</Label>
-                    <Input id="dateex" name="dateex" value={this.props.dayEx} readonly
+                    <Input id="dateex" name="dateex" type="text" value={this.props.dayEx} readonly
                     />
                   </FormGroup>
                   <FormGroup>
+                  {docData && docData.length > 0 && docData.map((item, index) => {
+                        return (<>
                     <Label for="doctor">Bác sĩ</Label>
                     <Input
-                      id="doctor" name="doctor" value="" readonly
+                      id="doctor" name="doctor" value={item.degree + " "+ item.fullName} readonly
                     />
+                    </>); })}
                   </FormGroup>
                   <Row>
                     <Col md={8}>
@@ -135,14 +172,17 @@ class BookingModal extends React.Component {
                       Bạn có chắc thông tin của bạn là chính xác
                     </Label>
                   </FormGroup>
-                  <Button onClick={() => { this.headelAddCard() }}>Gửi</Button>
+                  {userData && userData.length > 0 && userData.map((item, index) => {
+                        return (<>
+                  <Button onClick={() => { this.headelAddCard(item.idUser,this.props.dayEx) }}>Gửi</Button>
+                  </>); })}
                 </Form>
               </ModalBody>
               <ModalFooter>
                 {/* <Button color="primary" onClick={() => {this.toggle()}}>
                     Do Something
                 </Button>{' '} */}
-                <Button color="secondary" onClick={() => { this.toggle(); }} >  
+                <Button color="secondary" toggle={() => { this.toggle(); }} >  
                 Đóng
                 </Button>
               </ModalFooter>

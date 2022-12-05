@@ -18,12 +18,13 @@ class BookingPage extends React.Component {
     this.state = {
       bookingData: [],
       addBooking: [],
-      custonText: [],
       header: "",
       ttArr: [],
       visible: 4,
       layID: "",
-      isOpenModal: false,
+      isOpenModalDoctor: false,
+      isOpenModalDangKy: false,
+      nameDoctor: "",
 
       valueDateBook: "",
       valueTimeBook: "",
@@ -36,22 +37,27 @@ class BookingPage extends React.Component {
   }
 
   //Thay doi
-
   async handleDropdownChange(e) {
     this.setState({ valueDateBook: e.target.value });
   }
 
   handleSubmit(event) {
-    if(this.state.valueDateBook == "" || this.state.valueDateBook == "Chon ngay"){
+    if (
+      this.state.valueDateBook === "" ||
+      this.state.valueDateBook === "Chon ngay"
+    ) {
       alert("vui long chon ngay");
+    } else {
+      this.setState({
+        valueTimeBook: event.target.value,
+        datetimeBook: this.state.valueDateBook + " " + event.target.value,
+        isOpenModalDangKy: true,
+        // layID: this.state.idUser;
+      });
     }
-    this.setState({ valueTimeBook: event.target.value,
-      datetimeBook:  this.state.valueDateBook + " " + event.target.value
-    });
+
     event.preventDefault();
   }
-
-  
 
   //Loadmore
   loadMore() {
@@ -67,10 +73,9 @@ class BookingPage extends React.Component {
     let httpht = window.location.href;
     let idS = httpht.slice(30, 32);
     let res = await axios.get("/api/user/getUserDoctor/" + idS);
-    let adds = await axios.get("/api/examinationCard/addExaminationCard/");
+    // let adds = await axios.post("/api/examinationCard/addExaminationCard/");
     this.setState({
       bookingData: res,
-      addBooking: adds,
     });
     console.log("res:", res);
   }
@@ -90,89 +95,93 @@ class BookingPage extends React.Component {
 
   hienThiThongTin = (iu) => {
     this.setState({
-      isOpenModal: true,
+      isOpenModalDoctor: true,
       layID: iu,
     });
   };
 
-  // capNhatDT = (time) => {
-  //   console.log("res:", typeof this.state.valueDateBook);
-  //   return {
-  //     datetimeBook: String(time),
-  //   };
-  // };
 
-  toggleModal = () => {
+  letNameBS (dre, namD) {
+
+    this.setState(() => {
+      return { nameDoctor: dre + namD };
+    });
+  };
+
+  toggleModalDoctor = () => {
     this.setState({
-      isOpenModal: !this.state.isOpenModal,
+      isOpenModalDoctor: !this.state.isOpenModalDoctor,
+    });
+  };
+
+  toggleModalBooking = () => {
+    this.setState({
+      isOpenModalDangKy: !this.state.isOpenModalDangKy,
     });
   };
 
   render() {
     let { bookingData } = this.state;
-    let dateBook = this.state.dateBook;
     // let dateE = this.state.valueDateBook + " "+ this.state.valueTimeBook;
-    console.log(typeof dateBook);
     console.log("check state booking", this.state.bookingData);
     console.log("check state tt", this.state.ttArr);
-    console.log("check state tt", this.state.layID);
+    console.log("check state id", this.state.layID);
     console.log(this.state.datetimeBook);
     console.log(this.state.valueDateBook);
     console.log(this.state.valueTimeBook);
-    //  console.log(bookingData);
+    console.log(this.state.nameDoctor);
     return (
       <>
         <div>
           <UserModal
-            isOpen={this.state.isOpenModal}
-            toggleModal={this.toggleModal}
+            isOpenM={this.state.isOpenModalDoctor}
+            toggleModalDoctor={this.toggleModalDoctor}
             truyenTT={this.state.layID}
           />
         </div>
-        <div><BookingModal
-        toggleModal={this.toggleModal}
-        dayEx={this.state.datetimeBook}
-        />
-        
+        <div>
+          <BookingModal
+            isOpenModalDK={this.state.isOpenModalDangKy}
+            toggleModalBooking={this.toggleModalBooking}
+            dayEx={this.state.datetimeBook}
+            nameBS = {bookingData.map((item3) =>{return(item3.idUser)})}
+          />
         </div>
 
         <div className="container">
-          <div className="imformation">
-            {bookingData &&
-              bookingData.length > 0 &&
-              bookingData.map((item, index) => {
+        {bookingData && bookingData.length > 0 && bookingData.map((item, index) => {
                 return (
-                  <>
-                    <div className="tenKhoa key={index}">
+                   <>
+                  
+          <div className="imformation">         
+               
+            <div className="tenKhoa" key={index}>
                       <h2>{item.name}</h2>
-                    </div>
-                  </>
-                );
-              })}
+                    </div>     
             <div>
               {bookingData &&
                 bookingData.length > 0 &&
-                bookingData.map((item, index) => {
+                bookingData.map((item2, index) => {
                   return (
                     <>
                       <div className="noiDung">
                         <div id="header">
-                          {this.customtext(item.describeSpe).header}
+                          {this.customtext(item2.describeSpe).header}
                           <p></p>
                         </div>
                         <div>
                           <ul>
-                            {this.customtext(item.describeSpe).ttArr &&
-                              this.customtext(item.describeSpe).ttArr.length >
+                            {this.customtext(item2.describeSpe).ttArr &&
+                              this.customtext(item2.describeSpe).ttArr.length >
                                 0 &&
-                              this.customtext(item.describeSpe)
+                              this.customtext(item2.describeSpe)
                                 .ttArr.slice(0, this.state.visible)
                                 .map((textli, index2) => {
                                   return <li key={index2}>{textli}</li>;
                                 })}
                           </ul>
                           {this.state.visible <
-                            this.customtext(item.describeSpe).ttArr.length && (
+                            this.customtext(item2.describeSpe).ttArr.length && (
                             <div className=" mt-2 mb-5">
                               <button
                                 onClick={this.loadMore}
@@ -193,14 +202,14 @@ class BookingPage extends React.Component {
               <div className="col-md-6 col-left">
                 {bookingData &&
                   bookingData.length > 0 &&
-                  bookingData.map((item, index) => {
+                  bookingData.map((item3, index) => {
                     return (
                       <>
                         <div className="row">
                           <div className="col-md-2">
                             <img
                               className="imageBooking"
-                              src={item.imageUser}
+                              src={item3.imageUser}
                               width="80"
                               height="80"
                               alt="#"
@@ -208,7 +217,7 @@ class BookingPage extends React.Component {
                             <div>
                               <button
                                 onClick={() =>
-                                  this.hienThiThongTin(item.idUser)
+                                  this.hienThiThongTin(item3.idUser)
                                 }
                                 type="button"
                                 className="btn btn-primary createIn"
@@ -221,10 +230,10 @@ class BookingPage extends React.Component {
                             <div className="tenVaHieu">
                               <div className="tenBacSi">
                                 {" "}
-                                {item.degree} {item.fullName}{" "}
+                                {item3.degree} {item3.fullName}{" "}
                               </div>
                             </div>
-                            <div className="thongTin">{item.describeDoc}</div>
+                            <div className="thongTin">{item3.describeDoc}</div>
                           </div>
                         </div>
                       </>
@@ -232,7 +241,7 @@ class BookingPage extends React.Component {
                   })}
               </div>
 
-              <div className="col-md-6 col-right">
+              <div className="col-md-6 col-right">              
                 <div>
                   <select
                     value={this.state.valueDateBook}
@@ -251,6 +260,7 @@ class BookingPage extends React.Component {
                 <div className="btnGio">
                   <button
                     onClick={this.handleSubmit}
+                    // onClick = {this.letNameBS(item.degree, item.fullName)}
                     value="08:30:00"
                     type="button"
                     className="btn btn-primary bttime"
@@ -266,7 +276,7 @@ class BookingPage extends React.Component {
                     09:00 - 09:30
                   </button>
                   <button
-                    onClick={this.handleSubmit}
+                   onClick={this.handleSubmit}
                     value="09:30:00"
                     type="button"
                     className="btn btn-primary bttime"
@@ -281,8 +291,8 @@ class BookingPage extends React.Component {
                     10:00 - 10:30
                   </button>
                   <button
-                    onClick={this.handleSubmit}
-                    value= "10:30:00"
+                   onClick={this.handleSubmit}
+                    value="10:30:00"
                     type="button"
                     className="btn btn-primary bttime"
                   >
@@ -292,6 +302,9 @@ class BookingPage extends React.Component {
               </div>
             </div>
           </div>
+          </>
+                );
+              })}
         </div>
       </>
     );

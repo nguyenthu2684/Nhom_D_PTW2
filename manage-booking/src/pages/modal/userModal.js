@@ -9,47 +9,54 @@ class UserModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataDoctor: [],
+      idDoctor: "",
+      doctorData: [],
     };
+  }
+
+  truyenId(){
+    return({
+      idDoctor: this.props.truyenTT,
+    })
   }
   //ComDiMounts
   async componentDidMount() {
-    let id = this.props.truyenTT;
-    console.log(id);
-    let res = await axios.get("/api/user/getUserItrById/" + id);
+    let gdi = await axios.get("api/user/getDoctorById/"+this.truyenId().idDoctor);
     this.setState({
-      dataDoctor: res,
+      doctorData: gdi,
     });
-    console.log("res:", res);
+    console.log("res:", gdi);
   }
   async componentDidUpdate(prevProps, prevState) {
-    if (prevState.dataDoctor !== this.state.dataDoctor) {
+    if (prevState.doctorData !== this.state.doctorData) {
     }
   }
 
   toggle = () => {
-    this.props.toggleModal();
+    this.props.toggleModalDoctor();
   };
 
   render() {
-    let { dataDoctor } = this.state;
-    console.log(this.state);
+    let { doctorData } = this.state;
+    console.log("od: ",this.props.truyenTT);
+    console.log("id: ",this.truyenId().idDoctor);
+    // console.log("id: ",Number.string(this.state.idDoctor));
     return (
       <>
         <div>
-          {dataDoctor &&
-            dataDoctor.length > 0 &&
-            dataDoctor.map((item, index) => {
+          {doctorData &&
+            doctorData.length > 0 &&
+            doctorData.map((item, index) => {
               return (
                 <>
                   <div>
-                    <Modal isOpen={this.props.isOpen} toggle={() => { this.toggle(); }} className={"modalUser modal-dialog-centered"}  >
+                    <Modal isOpen={this.props.isOpenM} toggle={() => { this.toggle(); }} className={"modalUser modal-dialog-centered"}  >
                       <ModalHeader toggle={() => { this.toggle(); }} >
                         {item.degree} {item.fullName}
                       </ModalHeader>
                       <ModalBody>
-                            <div><img src={item.imageUser} className="imageUser"></img></div>
-                            <div>
+                            <div>{" "}
+                            <img src={item.imageUser} alt="" className="imageUser"></img>{""}
                               {item.describeDoc}
                             </div>
                       </ModalBody>

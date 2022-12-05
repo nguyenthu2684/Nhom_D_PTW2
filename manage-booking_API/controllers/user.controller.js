@@ -24,9 +24,9 @@ module.exports = {
         }, userId)
     },
 
-    getUserItrById: (req, res) => {
+    getDoctorById: (req, res) => {
         const userId = req.params.id;
-        User.getUserItrById(function(err, user) {
+        User.getDoctorById(function(err, user) {
             if (err) {
                 console.log('Controller - Get user by id: ', err);
                 res.send(err);
