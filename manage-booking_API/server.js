@@ -1,6 +1,7 @@
-const express = require("express");
-const bodyparser = require("body-parser");
-const dotenv = require("dotenv");
+const express = require('express');
+const bodyparser = require('body-parser');
+const dotenv = require('dotenv');
+const cors = require('cors');
 
 dotenv.config();
 const app = express();
@@ -59,7 +60,9 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
+app.use(cors());
 
+app.use('/uploads', express.static('uploads'))
 // app.get('/', (req, res) => {
 //   res.send("Hello!");
 // })

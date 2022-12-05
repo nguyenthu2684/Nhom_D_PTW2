@@ -1,57 +1,34 @@
-import React, { useState } from 'react'
-import './doctor.css'
+import './userManager.css';
+import { Space, Table, Modal, Button, Form, Input, InputNumber, Select, Switch, notification, DatePicker, Radio, Row, Col } from "antd"
+import { useEffect, useState } from 'react';
+import userService from './../../api/manage-user';
 
-import {
-    Button,
-    Col,
-    Form,
-    Input,
-    message,
-    Modal,
-    notification,
-    Popconfirm,
-    Row,
-    Tag,
-    Tabs,
-    Upload,
-    Table,
-    Typography,
-    Space,
-    Dropdown,
-    Menu,
-    Radio,
-    Select, form, DatePicker
-} from "antd";
-import {
-    EditOutlined,
-    DeleteOutlined,
-    UsergroupDeleteOutlined,
-    UploadOutlined,
-} from "@ant-design/icons";
-
-
-function DoctorList() {
+import { UploadOutlined, UsergroupDeleteOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons";
+const Users = () => {
+    const { confirm } = Modal;
+    const [form] = Form.useForm()
+    const [studentList, setUserList] = useState([])
     const [listImage, setListImage] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isLoading, seIsLoading] = useState(false);
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
-    const [form] = Form.useForm();
+    const [isEdit, setIsEdit] = useState(true);
     const { Option } = Select;
-    const { confirm } = Modal;
-    const fileList = [
-        {
-            uid: '-1',
-            name: 'xxx.png',
-            status: 'done',
-            url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-            thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        },
-        {
-            uid: '-2',
-            name: 'yyy.png',
-            status: 'error',
-        },
-    ];
-    const showDeleteConfirm = () => {
+
+    useEffect(() => {
+        loadListUser()
+    }, [])
+
+    const loadListUser = () => {
+        seIsLoading(true)
+        userService.listUser().then((res) => {
+            if (res) {
+                setUserList(res)
+                seIsLoading(false)
+            }
+        })
+    }
+    const onDelete = async (id) => {
         confirm({
             title: 'DELETE DOCTOR',
             icon: <UsergroupDeleteOutlined />,
@@ -59,221 +36,325 @@ function DoctorList() {
             okType: 'danger',
             cancelText: 'No',
             onOk() {
-                console.log('OK');
+                userService.deleteUser(id).then(res => {
+                    if (res) {
+                        loadListUser()
+                        notification.open({
+                            icon: <CheckOutlined style={{ color: "green" }} />,
+                            message: 'DELETE',
+                            description: 'Delete success'
+                        });
+                    }
+                })
             },
             onCancel() {
-                console.log('Cancel');
+                notification.open({
+                    icon: <CloseOutlined style={{ color: "red" }} />,
+                    message: 'DELETE',
+                    description: 'Delete fail'
+                });
             },
         });
-    };
-    const createPost = () => {
+
+    }
+    const onEdit = (id) => {
+        userService.detailUser(id).then(res => {
+            if (res) {
+                form.setFieldsValue({
+                    id: res.id,
+                    userName: res.userName,
+                    fullName: res.fullName,
+                    email: res.email,
+                    phone: res.phone,
+                    gender: res.gender,
+                    address: res.address,
+                    image: res.image,
+                })
+            }
+        })
         setIsModalOpen(true);
-        form.resetFields()
-    };
-
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    };
-
-    const uploadImage = (event) => {
-        setListImage([...listImage, event.target.files[0]])
+        setIsEdit(true)
     }
-    const deleteImage = (i) => {
-        setListImage([
-            ...listImage.slice(0, i),
-            ...listImage.slice(i + 1)
-        ])
-    }
-    const dataSource = [
-        {
-            key: '1',
-            no: '1',
-            name: 'Vi nguyen',
-            email: 'vi.nguyen7285@gmail.com',
-            department: 'ate to sleep'
-        },
-        {
-            key: '2',
-            name: 'John',
-            age: 42,
-            address: '10 Downing Street',
-        },
-    ];
-
     const columns = [
         {
             title: 'NO',
-            dataIndex: 'no',
-            key: 'no',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
+            title: 'UserName',
+            dataIndex: 'userName',
+            key: 'userName',
+        },
+        {
+            title: 'Full Name',
+            dataIndex: 'fullName',
+            key: 'fullName',
         },
         {
             title: 'Email',
             dataIndex: 'email',
             key: 'email',
         },
+
         {
-            title: 'Department',
-            dataIndex: 'department',
-            key: 'department',
+            title: 'Phone',
+            dataIndex: 'phone',
+            key: 'phone',
+        },
+        {
+            title: 'Birthday',
+            dataIndex: 'birthday',
+            key: 'birthday',
+        },
+
+        {
+            title: 'Gender',
+            dataIndex: 'gender',
+            key: 'gender',
+        },
+        {
+            title: 'Role',
+            dataIndex: 'role',
+            key: 'role',
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+            key: 'address',
+        },
+        {
+            title: 'Img',
+            dataIndex: 'image',
+            key: 'image',
+            render: (value) => <img src={value} width={100} height={100} alt="" />
         },
         {
             title: 'Action',
             render: (text, record) => {
                 return <Space>
-                    <Button className='action'
-                    ><EditOutlined /></Button>
+                    <button onClick={() => onEdit(record.id)}>Edit</button>
 
-                    <Button className='action'
-                        onClick={() => showDeleteConfirm()}><DeleteOutlined /></Button>
+                    <button onClick={() => onDelete(record.id)}>Delete</button>
                 </Space>
             },
         },
     ];
-    return (
-        <>
+    const createUser = () => {
+        setIsModalOpen(true);
+        setIsEdit(false)
+        form.resetFields()
+    };
 
-            <Button type="primary" onClick={() => createPost()}>
-                Create User
-            </Button>
-            <Modal title="Basic Modal" open={isModalOpen} onCancel={() => handleCancel()}
-                footer={
-                    <Space>
-                        <Button onClick={() => handleCancel()}>Đóng</Button>
-                        <Button type='primary' htmlType='submit' form='form'>Gửi đi</Button>
-                    </Space>
-                }>
-                <Form
-                    form={form}
-                    name="form"
-                    labelCol={{ span: 4 }}
-                    wrapperCol={{ span: 20 }}
-                    initialValues={{ remember: true, }}
-                    autoComplete="off"
-                    layout='horizontal'
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+
+    const onSubmit = (values) => {
+        if (isEdit) {
+            // sua 
+            userService.editUser(values.id, values).then(res => {
+                if (res) {
+                    loadListUser()
+                }
+            })
+        } else {
+            // tạo mới
+            const params = { ...values, password: '123', image: "https://thucungsaigon.com/images/cho/ban-cho-husky-wooly.jpg" }
+            userService.addUser(params).then(res => {
+                if (res) {
+                    loadListUser()
+                }
+            })
+        }
+
+        form.resetFields()
+        handleCancel()
+    }
+
+    const uploadImage = (event) => {
+        setListImage([...listImage, event.target.files[0]])
+    }
+
+    const deleteImage = (i) => {
+        setListImage([
+            ...listImage.slice(0, i),
+            ...listImage.slice(i + 1)
+        ])
+    }
+    return (<div className='color'>
+        <button onClick={() => createUser()}>Create User</button>
+        <Table loading={isLoading} dataSource={studentList} columns={columns} rowKey="id" />
+        <Modal
+            title={isEdit ? "EDIT ACCOUNT" : "CREATE ACCOUNT"}
+            visible={isModalOpen} onCancel={() => handleCancel()}
+            footer={
+                <Space>
+                    <Button onClick={() => handleCancel()}>Cancel</Button>
+                    <Button type='primary' htmlType='submit' form='form'>Submit</Button>
+                </Space>
+            }>
+            <Form
+                form={form}
+                name="form"
+                labelCol={{ span: 5 }}
+                wrapperCol={{ span: 19 }}
+                initialValues={{
+                    remember: true,
+                }}
+                onFinish={onSubmit}
+                autoComplete="off"
+                layout='horizontal'
+            >
+
+                {/* ID */}
+                <Form.Item
+                    label="ID"
+                    name="id"
                 >
-                    {/* ID */}
-                    <Form.Item
-                        label="ID"
-                        name="id"
-                    >
-                        <Input disabled={true} />
-                    </Form.Item>
-                    {/* Tên */}
-                    <Form.Item
-                        label="Name"
-                        name="name"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please fill your name",
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
+                    <Input disabled={true} />
+                </Form.Item>
+                {/* Tên */}
+                <Form.Item
+                    label="User Name"
+                    name="userName"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please fill your User name",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
 
-                    {/* Email */}
-                    <Form.Item
-                        label="Email"
-                        name="email"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please fill your email",
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
+                <Form.Item
+                    label="Full Name"
+                    name="fullName"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please fill full name",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
 
-                    {/* Điện thoại */}
-                    <Form.Item
-                        label="Phone"
-                        name="phone"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please fill your phone",
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
+                {/* Email */}
+                <Form.Item
+                    label="Email"
+                    name="email"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please fill your email",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                {/* Điện thoại */}
+                <Form.Item
+                    label="Phone"
+                    name="phone"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please fill your phone",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
 
 
-                    {/* Chọn ngày sinh */}
-                    <Form.Item
-                        label="BirthDay"
-                        name="birthday"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please choose your day of birth",
-                            },
-                        ]}
-                    >
-                        <DatePicker
-                            format={dateFormatList}
-                            style={{ width: '100%' }} />
-                    </Form.Item>
-                    {/* Chọn giới tính */}
-                    <Form.Item
-                        label="Gender"
-                        name="gender"
-                    >
-                        <Radio.Group name="radiogroup" initialValues={1}>
-                            <Radio value={1}>Male</Radio>
-                            <Radio value={2}>Female</Radio>
-                        </Radio.Group>
-                    </Form.Item>
-                    {/* Chọn khoa */}
-                    <Form.Item
-                        label="Department"
-                        name="department"
-                    >
-                        <Select placeholder="Loại">
-                            <Option value="male">male</Option>
-                            <Option value="female">female</Option>
-                            <Option value="other">other</Option>
-                        </Select>
-                    </Form.Item>
+                {/* Chọn ngày sinh */}
+                <Form.Item
+                    label="BirthDay"
+                    name="birthday"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please choose your day of birth",
+                        },
+                    ]}
+                >
 
-                    {/* Upload hình ảnh */}
-                    <Form.Item
-                        label="Upload"
-                        name="upload">
-                        <div className="upload-btn-wrapper">
-                            <button className="btn"><UploadOutlined /></button>
-                            <input type="file" name="myfile" onChange={uploadImage} />
-                        </div>
-                        <br />
-                        <Row gutter={24}>
-                            {
-                                listImage && listImage.map((item, index) =>
-                                    <Col xs={24} md={12} key={index}>
-                                        <div className="container">
-                                            <img src={URL.createObjectURL(item)} alt="Avatar" className="image" />
-                                            <div className="middle">
-                                                <div className="text" onClick={() => deleteImage(index)}>Xoa</div>
-                                            </div>
+                    <DatePicker
+                        format={dateFormatList}
+                        style={{ width: '100%' }} />
+
+
+                </Form.Item>
+                {/* Chọn giới tính */}
+                <Form.Item
+                    label="Gender"
+                    name="gender"
+                >
+                    <Radio.Group name="radiogroup" initialValues={1}>
+                        <Radio value={1}>Male</Radio>
+                        <Radio value={2}>Female</Radio>
+                    </Radio.Group>
+                </Form.Item>
+
+                {/* Quyền */}
+                <Form.Item
+                    label="Role"
+                    name="role"
+
+                >
+                    <Select placeholder="Please choose">
+                        <Option value={1}>Loại 1</Option>
+                        <Option value={2}>Loại 2</Option>
+                        <Option value={3}>Loại 3</Option>
+                    </Select>
+                </Form.Item>
+                {/* Địa chỉ */}
+                <Form.Item
+                    label="Address"
+                    name="address"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please fill your address",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                {/* Upload hình ảnh */}
+                <Form.Item
+                    label="Upload"
+                    name="img">
+                    {/* <Input /> */}
+
+                    <div className="upload-btn-wrapper">
+                        <button className="btn"><UploadOutlined /></button>
+                        <input type="file" name="myfile" onChange={uploadImage} />
+                    </div>
+                    <br />
+                    <Row gutter={24}>
+                        {
+                            listImage && listImage.map((item, index) =>
+                                <Col xs={24} md={12} key={index}>
+                                    <div className="container">
+                                        <img src={URL.createObjectURL(item)} alt="Avatar" className="image" />
+                                        <div className="middle">
+                                            <div className="text" onClick={() => deleteImage(index)}>Xoa</div>
                                         </div>
-                                    </Col>
-                                )
-                            }
-                        </Row>
-                    </Form.Item>
-                </Form>
-            </Modal>
-            <br />
-            <Table dataSource={dataSource} columns={columns} />;
-
-        </>
-    )
+                                    </div>
+                                </Col>
+                            )
+                        }
+                    </Row>
+                </Form.Item>
+            </Form>
+        </Modal>
+    </div>)
 }
 
-export default DoctorList
+export default Users;

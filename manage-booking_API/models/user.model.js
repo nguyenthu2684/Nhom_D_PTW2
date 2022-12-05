@@ -1,6 +1,6 @@
 const dbConnection = require('../configs/db.config');
 
-const User = function(user) {
+const User = function (user) {
     this.userName = user.userName;
     this.fullName = user.fullName;
     this.email = user.email;
@@ -12,8 +12,8 @@ const User = function(user) {
     this.role = user.role;
 }
 
-User.getAll = function(result) {
-    dbConnection.query("select * from users", function(err, res) {
+User.getAll = function (result) {
+    dbConnection.query("select * from users", function (err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
@@ -36,8 +36,8 @@ User.getDoctorById = function(result, userId) {
     });   
 }
 
-User.getUserById = function(result, userId) {
-    dbConnection.query("select * from users where idUser=" + userId, function(err, res) {
+User.getUserById = function (result, userId) {
+    dbConnection.query("select * from users where id=" + userId, function (err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
@@ -45,12 +45,11 @@ User.getUserById = function(result, userId) {
             console.log("User: ", res);
             result(null, res);
         }
-    });   
+    });
 }
 
-
-User.addUser = function(result, data) {  
-    dbConnection.query('insert into `users`(`userName`, `fullName`, `email`, `phone`, `birthday`, `gender`, `address`, `imageUser`, `role`) value("'+ data.userName +'","'+ data.fullName + '","'+ data.email +'","'+ data.phone +'","'+ data.birthday +'","'+ data.gender +'","' + data.address +'","'+ data.imageUser +'","3")', function(err, res) {
+User.addUser = function (result, data) {
+    dbConnection.query('insert into `users`(`userName`, `fullName`, `email`, `phone`, `birthday`, `gender`, `address`, `image`, `role`) value("' + data.userName + '","' + data.fullName + '","' + data.email + '","' + data.phone + '","' + data.birthday + '","' + data.gender + '","' + data.address + '","' + data.image + '","3")', function (err, res) {
         if (err) {
             console.log("Error: ", err);
             result(null, err);
@@ -93,7 +92,7 @@ User.deleteUserByID = function (result, userId) {
           console.log("Doctor: ", res);
           result(null, res);
         }
-      }
+        }
     );
   }
 

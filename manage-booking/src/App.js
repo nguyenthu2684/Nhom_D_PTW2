@@ -19,23 +19,13 @@ function App() {
             const Speci = route.component
             return <Route key={index} path={route.path} element={<Speci/>} />;
           })}
+          <Route path="/*" element={<AdminPage />} />
+                    <Route exact path="/home" element={<HomePage />} />
+                    <Route path="/posts/:id" element={<DetailPost/>}/>
+                   
         </Routes>
       </div>
     </Router>
-    
-    // <Router>
-    //   <div className="App">
-    //     <Routes>
-    //       <Route path='/speaci' element={<Specialist/>}/>
-    //     </Routes>
-    //   </div>
-    // </Router>
-    
-    // <>
-    // <HeaderComponent></HeaderComponent>
-    //   <Specialist />
-    //   <FooterComponent></FooterComponent>
-    // </>
   );
 }
 
